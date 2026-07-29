@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barcelona — Nov 23–26</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: #f0f2f5; color: #1a1a2e; overflow: hidden; }
+
+  :root {
+    --bg: #f0f2f5;
+    --panel: #ffffff;
+    --panel2: #f7f8fa;
+    --border: #e4e6ea;
+    --text: #1a1a2e;
+    --text2: #5a5f7a;
+    --text3: #9097b0;
+    --gold: #f5a623;
+    --d1: #2979b8;
+    --d2: #6c3fc4;
+    --d3: #0e9e72;
+    --radius: 12px;
+  }
+
+  .deck { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+  .slide { position: absolute; inset: 0; display: none; }
+  .slide.active { display: flex; flex-direction: column; }
+
+  /* ── COVER ── */
+  .cover {
+    background: linear-gradient(160deg, #1a1a2e 0%, #2d2b6b 50%, #1a3a5c 100%);
+    align-items: center; justify-content: center; text-align: center; padding: 40px;
+  }
+  .cover-eyebrow { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 14px; }
+  .cover-title { font-size: 78px; font-weight: 800; letter-spacing: -4px; line-height: 1; color: #fff; }
+  .cover-title span { color: var(--gold); }
+  .cover-sub { font-size: 15px; color: rgba(255,255,255,0.55); margin-top: 10px; }
+  .cover-days { display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; justify-content: center; }
+  .cover-day-card {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+    border-radius: var(--radius); padding: 14px 20px; cursor: pointer;
+    transition: all 0.2s; min-width: 155px; text-align: left; color: #fff;
+  }
+  .cover-day-card:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+  .cover-day-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; font-weight: 700; }
+  .cover-day-card .name { font-size: 14px; font-weight: 700; }
+  .cover-day-card .desc { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+  .d1-color { color: #5aabee; }
+  .d2-color { color: #b48ef5; }
+  .d3-color { color: #4cd6a8; }
+  .cover-start-btn {
+    margin-top: 40px; background: var(--gold); color: #1a1200;
+    border: none; font-size: 15px; font-weight: 700; padding: 13px 38px;
+    border-radius: 50px; cursor: pointer; transition: opacity 0.2s;
+  }
+  .cover-start-btn:hover { opacity: 0.88; }
+
+  /* ── DAY SLIDE LAYOUT ── */
+  .day-slide { display: flex; flex: 1; min-height: 0; background: var(--bg); }
+
+  /* ── LEFT PANEL ── */
+  .left-panel { width: 360px; flex-shrink: 0; display: flex; flex-direction: column; background: var(--panel); border-right: 1px solid var(--border); min-height: 0; }
+  .panel-header { padding: 18px 20px 14px; border-bottom: 1px solid var(--border); background: var(--panel); }
+  .back-btn { background: none; border: none; color: var(--text3); font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 4px; margin-bottom: 12px; padding: 0; transition: color 0.15s; }
+  .back-btn:hover { color: var(--text); }
+  .day-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; }
+  .d1-badge { background: #e8f3fd; color: #1a6bba; border: 1px solid #c5dff7; }
+  .d2-badge { background: #f0eafd; color: #5c30a8; border: 1px solid #d8c5f7; }
+  .d3-badge { background: #e4f8f2; color: #0a7a58; border: 1px solid #b8ead9; }
+  .panel-title { font-size: 20px; font-weight: 800; color: var(--text); line-height: 1.2; }
+  .panel-sub { font-size: 12px; color: var(--text2); margin-top: 4px; line-height: 1.5; }
+
+  /* ── STOP CARDS ── */
+  .stops-list { flex: 1; overflow-y: auto; padding: 12px 14px; min-height: 0; scrollbar-width: thin; scrollbar-color: #ddd transparent; }
+  .stops-list::-webkit-scrollbar { width: 4px; }
+  .stops-list::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+
+  .stop-item { border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; cursor: pointer; border: 1.5px solid transparent; transition: all 0.18s; background: var(--panel2); }
+  .stop-item:hover { background: #eef0f5; }
+  .stop-item.active { background: #fff; border-color: var(--accent-color, #2979b8); box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .stop-item.d1.active { --accent-color: var(--d1); }
+  .stop-item.d2.active { --accent-color: var(--d2); }
+  .stop-item.d3.active { --accent-color: var(--d3); }
+
+  .stop-top { display: flex; align-items: flex-start; gap: 10px; }
+  .stop-thumb-wrap { position: relative; width: 56px; height: 56px; flex-shrink: 0; }
+  .stop-thumb { width: 56px; height: 56px; border-radius: 9px; object-fit: cover; display: block; background: #e8eaed; }
+  .stop-num { position: absolute; bottom: -4px; right: -4px; width: 18px; height: 18px; border-radius: 50%; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; color: #fff; }
+  .d1-num { background: var(--d1); }
+  .d2-num { background: var(--d2); }
+  .d3-num { background: var(--d3); }
+
+  .stop-meta { flex: 1; min-width: 0; }
+  .stop-time { font-size: 11px; color: var(--text3); font-weight: 600; letter-spacing: 0.02em; }
+  .stop-name { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.3; margin-top: 1px; }
+  .stop-rating { display: flex; align-items: center; gap: 5px; margin-top: 3px; }
+  .stop-stars { color: var(--gold); font-size: 12px; letter-spacing: -1px; }
+  .stop-rating-num { font-size: 11px; font-weight: 700; color: var(--text2); }
+  .stop-rating-count { font-size: 11px; color: var(--text3); }
+  .stop-type { font-size: 11px; color: var(--text3); margin-left: 2px; }
+  .stop-preview { font-size: 11px; color: var(--text2); margin-top: 4px; line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .stop-detail { font-size: 12px; color: var(--text2); line-height: 1.65; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); display: none; }
+  .stop-item.active .stop-detail { display: block; }
+  .stop-item.active .stop-preview { display: none; }
+  .stop-addr { font-size: 11px; color: var(--text3); margin-top: 6px; }
+
+  /* ── PANEL FOOTER ── */
+  .panel-footer { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: var(--panel); }
+  .day-nav-btn { background: var(--panel2); border: 1px solid var(--border); color: var(--text); font-size: 12px; padding: 7px 14px; border-radius: 8px; cursor: pointer; transition: background 0.15s; font-weight: 600; }
+  .day-nav-btn:hover { background: #e4e6ea; }
+  .day-nav-btn:disabled { opacity: 0.35; cursor: default; }
+  .day-indicator { display: flex; gap: 6px; }
+  .day-dot { width: 7px; height: 7px; border-radius: 50%; background: #ccc; cursor: pointer; border: none; transition: all 0.2s; }
+  .day-dot.active { background: var(--text); width: 18px; border-radius: 4px; }
+
+  /* ── MAP ── */
+  .map-panel { flex: 1; position: relative; min-height: 0; }
+  .map-panel > div[id^="map"] { position: absolute; inset: 0; }
+  .map-overlay { position: absolute; top: 14px; right: 14px; background: rgba(255,255,255,0.95); border: 1px solid var(--border); border-radius: 10px; padding: 9px 13px; font-size: 12px; color: var(--text2); z-index: 500; max-width: 190px; line-height: 1.5; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+  .map-overlay strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 13px; }
+
+  /* ── LEAFLET OVERRIDES ── */
+  .leaflet-popup-content-wrapper { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; color: var(--text); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+  .leaflet-popup-tip { background: #fff; }
+  .leaflet-popup-content { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; font-size: 13px; line-height: 1.5; margin: 10px 13px; }
+  .popup-title { font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+  .popup-time { font-size: 11px; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
+  .popup-body { font-size: 12px; color: var(--text2); }
+  .leaflet-control-zoom { border: 1px solid var(--border) !important; border-radius: 8px !important; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important; }
+  .leaflet-control-zoom a { background: #fff !important; color: #333 !important; border-color: var(--border) !important; font-weight: 700 !important; }
+  .leaflet-control-zoom a:hover { background: #f5f5f5 !important; }
+  .leaflet-control-attribution { background: rgba(255,255,255,0.8) !important; color: #999 !important; font-size: 10px !important; }
+  .leaflet-control-attribution a { color: #888 !important; }
+
+  /* ── HOTEL NOTE ── */
+  .hotel-note { margin-top: 10px; padding: 12px 13px; background: #fffbf0; border-radius: 9px; border: 1px solid #fde8a8; }
+  .hotel-note-label { font-size: 11px; color: #b07d00; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; font-weight: 700; }
+  .hotel-note-body { font-size: 12px; line-height: 1.6; color: #5a4a00; }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- COVER -->
+  <div class="slide active" id="slide-cover">
+    <div class="cover" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px; height:100%;">
+      <div class="cover-eyebrow">Family Trip · Nov 23–26, 2024</div>
+      <div class="cover-title">Barce<span>lona</span></div>
+      <div class="cover-sub">2 full days + arrival evening &nbsp;·&nbsp; Ages 11 &amp; 16 &nbsp;·&nbsp; Eixample base</div>
+      <div class="cover-days">
+        <div class="cover-day-card" onclick="showSlide('day1')">
+          <div class="label d1-color">Mon Nov 23</div>
+          <div class="name">Arrival Evening</div>
+          <div class="desc">Ciudad Condal tapas</div>
+        </div>
+        <div class="cover-day-card" onclick="showSlide('day2')">
+          <div class="label d2-color">Tue Nov 24</div>
+          <div class="name">Gaudí Day</div>
+          <div class="desc">Sagrada Família → Park Güell → La Pedrera</div>
+        </div>
+        <div class="cover-day-card" onclick="showSlide('day3')">
+          <div class="label d3-color">Wed Nov 25</div>
+          <div class="name">Old City + Montjuïc</div>
+          <div class="desc">Gothic → Born → Castle → Dinner</div>
+        </div>
+      </div>
+      <button class="cover-start-btn" onclick="showSlide('day1')">Start with Day 1 →</button>
+    </div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="slide" id="slide-day1">
+    <div class="day-slide">
+      <div class="left-panel">
+        <div class="panel-header">
+          <button class="back-btn" onclick="showSlide('cover')">← Overview</button>
+          <div class="day-badge d1-badge">Monday, Nov 23</div>
+          <div class="panel-title">Arrival Evening</div>
+          <div class="panel-sub">Drop bags, walk to dinner. One stop, easy night.</div>
+        </div>
+        <div class="stops-list" id="stops-day1">
+
+          <div class="stop-item d1 active" onclick="selectStop(this,'day1',0)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjA_q-ba7GJPQHqRWhc11w23rjp93CXb0-5VuZvxK0VHsh0XcItxk8_TyPBWVG59bky62x3DuXd8CRJoDJZ46mJ1y9Vz6H0kQU9WFj-GYWd0eGYyaLuEVcM68jCdS5q9rFr8JcXiRQASe6HFYA=s400-w400-h400" alt="Ciudad Condal" loading="lazy">
+                <div class="stop-num d1-num">1</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">8:30 PM</div>
+                <div class="stop-name">Ciudad Condal</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(23,105)</span>
+                  <span class="stop-type">· Tapas bar</span>
+                </div>
+                <div class="stop-preview">Brochetas de gamba, solomillos, pimientos de padrón…</div>
+              </div>
+            </div>
+            <div class="stop-detail">
+              Your friend's order: brochetas de gamba, solomillos, montaditos de queso, habitas con calamarsets, pimientos de padrón. Sit at the bar — far right corner if possible. Wash it down with Albariño or a Rioja red. Open until 1am.
+              <div class="stop-addr">📍 Rambla de Catalunya 18, Eixample</div>
+            </div>
+          </div>
+
+          <div class="hotel-note">
+            <div class="hotel-note-label">Hotel search zone</div>
+            <div class="hotel-note-body">Look between <strong>Passeig de Gràcia</strong>, <strong>Rambla de Catalunya</strong>, and <strong>Gran Via</strong> — 5 min walk from tonight's dinner and central for both full days.</div>
+          </div>
+
+        </div>
+        <div class="panel-footer">
+          <button class="day-nav-btn" disabled>← Cover</button>
+          <div class="day-indicator">
+            <button class="day-dot active" onclick="showSlide('day1')"></button>
+            <button class="day-dot" onclick="showSlide('day2')"></button>
+            <button class="day-dot" onclick="showSlide('day3')"></button>
+          </div>
+          <button class="day-nav-btn" onclick="showSlide('day2')">Gaudí Day →</button>
+        </div>
+      </div>
+      <div class="map-panel">
+        <div id="map"></div>
+        <div class="map-overlay"><strong>Eixample</strong>Your hotel base. Everything is walkable from here.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="slide" id="slide-day2">
+    <div class="day-slide">
+      <div class="left-panel">
+        <div class="panel-header">
+          <button class="back-btn" onclick="showSlide('cover')">← Overview</button>
+          <div class="day-badge d2-badge">Tuesday, Nov 24</div>
+          <div class="panel-title">Gaudí Day</div>
+          <div class="panel-sub">North to south down Passeig de Gràcia. Sunset on the rooftop.</div>
+        </div>
+        <div class="stops-list" id="stops-day2">
+
+          <div class="stop-item d2 active" onclick="selectStop(this,'day2',0)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjD-uD3rW4IX07kFDDaSSkicUGkLEuHzv9WCgtWSQcp1eKLa61wJ366r1CWc2AygQ8kaverwhbqCA-cWi5k0Mr2jgNKxs0yvm4FdInj5iEZla3sAiR_wpApMr7mjjgxKwVP1eBMRHXDqclVbIMO49N_ywA=s400-w400-h400" alt="Sagrada Família" loading="lazy">
+                <div class="stop-num d2-num">1</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">9:00 AM</div>
+                <div class="stop-name">Sagrada Família</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.8</span>
+                  <span class="stop-rating-count">(326,555)</span>
+                  <span class="stop-type">· Tourist attraction</span>
+                </div>
+                <div class="stop-preview">Book timed tickets weeks in advance. Budget 90…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Book timed entry at sagradafamilia.org — they sell out weeks ahead. Budget 90 minutes. Morning light through the stained glass is spectacular. The interior scale will stop the kids cold.<div class="stop-addr">📍 Carrer de Mallorca 401, Eixample</div></div>
+          </div>
+
+          <div class="stop-item d2" onclick="selectStop(this,'day2',1)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjAkkfL8Kdd77fOAMFWtL2ERnx0lU6a0lCDw6Q4dmAOj11xd_2PdbdZ9QpxchTozmp011Ipr6FCvNylr5tumM9sGVJTuzFD9CLPsLHCQ5XaQKUGvZT3VIGqPrcwFM1KgGRBMaOuGWJVqRE7Ky5k=s400-w400-h400" alt="Park Güell" loading="lazy">
+                <div class="stop-num d2-num">2</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">11:30 AM</div>
+                <div class="stop-name">Park Güell</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(238,326)</span>
+                  <span class="stop-type">· Park</span>
+                </div>
+                <div class="stop-preview">Mosaic salamander, tilted columns, panoramic views…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Short taxi north from Sagrada Família. Mosaic salamander, tilted stone columns, panoramic views of the whole city. Book timed entry at parkguell.barcelona. The 11-year-old will love it more than any museum.<div class="stop-addr">📍 Carrer d'Olot, Gràcia</div></div>
+          </div>
+
+          <div class="stop-item d2" onclick="selectStop(this,'day2',2)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjBQCrUkplhn89fV4xqKkqamIixo4SqWO5P7UiK_er8rFjrlJWz2ra9xBtmL6_Fcea06k0qRsMHUrTxigt27GQZAOLQcYGek2HBcLAq7AZIb5-Y5E4a0vkv7MrUg3meYc7QErvgeuaY6pBd717o=s400-w400-h400" alt="El Nacional" loading="lazy">
+                <div class="stop-num d2-num">3</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">1:30 PM</div>
+                <div class="stop-name">El Nacional</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(40,804)</span>
+                  <span class="stop-type">· Food hall</span>
+                </div>
+                <div class="stop-preview">Four restaurants under one Art Deco roof…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Art Deco food hall on Passeig de Gràcia — four restaurants under one roof. Everyone orders what they want. Great with kids. Make a reservation. Not on the original email but a real gap.<div class="stop-addr">📍 Pg. de Gràcia 24 Bis, Eixample</div></div>
+          </div>
+
+          <div class="stop-item d2" onclick="selectStop(this,'day2',3)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjDBP2neFB13cCRd5qWyq3sseRloNkGAb8GkqpDViiYddW_KntGTKiN_P9bHy9bVZ53PC2W6DXp1ctLCAfjg_CE8RkjfksWUa62784V-WLbBV1uLSzDrqnZ6mWW3Rsj08xGoP2ssRShhLihNwKNxz1VsuQ=s400-w400-h400" alt="La Pedrera" loading="lazy">
+                <div class="stop-num d2-num">4</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">4:00 PM</div>
+                <div class="stop-name">La Pedrera — Casa Milà</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(112,570)</span>
+                  <span class="stop-type">· Museum</span>
+                </div>
+                <div class="stop-preview">Aim for rooftop by 5pm for November sunset…</div>
+              </div>
+            </div>
+            <div class="stop-detail">November sunset is ~5:30pm — aim for rooftop by 5. Spend 45 mins in the Gaudí museum inside first. The chimney warrior sculptures on the roof are genuinely surreal.<div class="stop-addr">📍 Pg. de Gràcia 92, Eixample</div></div>
+          </div>
+
+        </div>
+        <div class="panel-footer">
+          <button class="day-nav-btn" onclick="showSlide('day1')">← Day 1</button>
+          <div class="day-indicator">
+            <button class="day-dot" onclick="showSlide('day1')"></button>
+            <button class="day-dot active" onclick="showSlide('day2')"></button>
+            <button class="day-dot" onclick="showSlide('day3')"></button>
+          </div>
+          <button class="day-nav-btn" onclick="showSlide('day3')">Day 3 →</button>
+        </div>
+      </div>
+      <div class="map-panel">
+        <div id="map2"></div>
+        <div class="map-overlay"><strong>Eixample + Gràcia</strong>Stops flow north to south — minimal backtracking.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="slide" id="slide-day3">
+    <div class="day-slide">
+      <div class="left-panel">
+        <div class="panel-header">
+          <button class="back-btn" onclick="showSlide('cover')">← Overview</button>
+          <div class="day-badge d3-badge">Wednesday, Nov 25</div>
+          <div class="panel-title">Old City + Montjuïc</div>
+          <div class="panel-sub">Walk the Gothic and Born. Taxi to the castle. Last dinner.</div>
+        </div>
+        <div class="stops-list" id="stops-day3">
+
+          <div class="stop-item d3 active" onclick="selectStop(this,'day3',0)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjDgZKi4XM0MLMQkwzaU08cjiS7NF_L99Cl4JH9Ak_l3NkIyxdhae5Y2LeegxwXlgRM2eccrsmKNxIwluK2cJ35V0_sMqpmlcp2MzzWSy4s9YYNHEHSK-I7JiCJgEz6S1iZ2o1zY_CGjujDe=s400-w400-h400" alt="La Boqueria" loading="lazy">
+                <div class="stop-num d3-num">1</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">9:30 AM</div>
+                <div class="stop-name">La Boqueria</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.5</span>
+                  <span class="stop-rating-count">(214,065)</span>
+                  <span class="stop-type">· Market</span>
+                </div>
+                <div class="stop-preview">Go early — crowds build fast. Fresh fruit, jamón, juice…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Go early — crowds build fast. Fresh fruit cups, jamón, juice, chocolate. 45 minutes is enough. The 11-year-old will love the sensory overload. Notably absent from the email.<div class="stop-addr">📍 La Rambla 91, Ciutat Vella</div></div>
+          </div>
+
+          <div class="stop-item d3" onclick="selectStop(this,'day3',1)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjBTpqD3FoU0IMsWR6SIVA27ZB6JVvUSsqqGDTQkHLz2ZtJdVuDjiDJCFA_Hj_k2CYbTq9XQB_RVUB6CPm6ciW7tNy0WE0IRxfwAU63o9BBAcwsLJT7ofX54txcdgVZkVjSlbNipBkMF9LD5GQ=s400-w400-h400" alt="Santa Maria del Mar" loading="lazy">
+                <div class="stop-num d3-num">2</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">10:45 AM</div>
+                <div class="stop-name">Santa Maria del Mar</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.7</span>
+                  <span class="stop-rating-count">(40,233)</span>
+                  <span class="stop-type">· Church</span>
+                </div>
+                <div class="stop-preview">Finest Catalan Gothic. Soaring columns, rooftop views…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Walk east through the Gothic Quarter toward Born. The finest example of Catalan Gothic — soaring columns, minimal ornament. Climb to the rooftop for views over the neighbourhood.<div class="stop-addr">📍 Plaça de Santa Maria 1, Born</div></div>
+          </div>
+
+          <div class="stop-item d3" onclick="selectStop(this,'day3',2)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjC-AyE8YDOc8oN84bOoBGt70_xS1Z8B0Wn-qXjo6_MXKk0ysJ9uUXr9oZG_zQijr1DZeBbcEGsPc1NekuMRh7ENzQx1daorYNv3AmKFurAGGWVSKACbK2ly1o7vECATTro55cyb9I0yNAsUyqM=s400-w400-h400" alt="Cal Pep" loading="lazy">
+                <div class="stop-num d3-num">3</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">1:00 PM</div>
+                <div class="stop-name">Cal Pep</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(3,132)</span>
+                  <span class="stop-type">· Tapas</span>
+                </div>
+                <div class="stop-preview">Arrive at 1pm sharp. Counter seats, no menu…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Your friend's top pick. Arrive right at 1pm for counter seats. No menu — the waiter guides you. Must-orders: trifásico, tortilla de patata with chistorra, pimientos de padrón.<div class="stop-addr">📍 Plaça de les Olles 8, Born</div></div>
+          </div>
+
+          <div class="stop-item d3" onclick="selectStop(this,'day3',3)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjDgPGOWxzsasAVEd8r01kVdxGxkND7VFGKqejRMAF88lYNgQRYa32PI6GVmOjrTvzI1NCGJmpXo_xyaGUy6jdMZTRfJwGY8a4MZ6VNqcjnA4qOPQnjGSX0-COVv6b4ZbO3QMYp8aYPRkpswTw=s400-w400-h400" alt="Gelaaati di Marco" loading="lazy">
+                <div class="stop-num d3-num">4</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">2:30 PM</div>
+                <div class="stop-name">Gelaaati di Marco</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.7</span>
+                  <span class="stop-rating-count">(5,373)</span>
+                  <span class="stop-type">· Gelato</span>
+                </div>
+                <div class="stop-preview">Best gelato in Barcelona. Get the pistachio…</div>
+              </div>
+            </div>
+            <div class="stop-detail">4.7 stars across 5,000+ reviews. The pistachio is the move. Non-negotiable with an 11-year-old. 5-minute walk from Cal Pep.<div class="stop-addr">📍 Carrer de la Llibreteria 7, Gothic</div></div>
+          </div>
+
+          <div class="stop-item d3" onclick="selectStop(this,'day3',4)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjB9AxRmZcfxaO2vo4E9kxDTW_fWu-XEV-hYaBBGoVpjGM4zSmSqoAVDQI3JIeqnpEZP-VPCTRv68oEm61I3018rXVhrP44EdfHTaBMjdP06Nua7o9AUn2wMLJw39YXAD58rLl6Tc9HbUd_NpMq2FKODGQ=s400-w400-h400" alt="Mercat del Born" loading="lazy">
+                <div class="stop-num d3-num">5</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">3:00 PM</div>
+                <div class="stop-name">Mercat del Born — Roman Ruins</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★</span>
+                  <span class="stop-rating-num">4.2</span>
+                  <span class="stop-rating-count">(1,800+)</span>
+                  <span class="stop-type">· History</span>
+                </div>
+                <div class="stop-preview">Roman ruins under a glass-and-iron market hall…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Roman ruins discovered during renovation, now under the original iron-and-glass market hall. A giant archaeological dig you can walk around. Give it 45 minutes.<div class="stop-addr">📍 Plaça Comercial 12, Born</div></div>
+          </div>
+
+          <div class="stop-item d3" onclick="selectStop(this,'day3',5)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjAJj6iFjlZIJjJ12MqOZmKdju-1k73m2DkXU_QrE3Ha-h4ZAeMmSAL-mt4MQS_F7Cxki5nptfVUtcnxwInNmJKKzhqwRD8oLzO6Rj-vslDuU9jgod0NKO9iHphE7lUcSLh1seMQJ4Y9L-PzUg=s400-w400-h400" alt="Montjuïc Cable Car" loading="lazy">
+                <div class="stop-num d3-num">6</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">4:15 PM</div>
+                <div class="stop-name">Montjuïc Cable Car</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(27,346)</span>
+                  <span class="stop-type">· Attraction</span>
+                </div>
+                <div class="stop-preview">Taxi from Born (~15 min). Castle + panoramic views…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Taxi from Born (~15 min). Cable car up to Montjuïc Castle — panoramic views of the city and the Med. Check November closing times before you go.<div class="stop-addr">📍 Avinguda Miramar 30, Montjuïc</div></div>
+          </div>
+
+          <div class="stop-item d3" onclick="selectStop(this,'day3',6)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjAGwHMat2W2QevcCNV3egpLo0eWuDqMiZtuPQJ1CTluH1LrvioVZjHFARlgYtYcYv5VhCMuNLrX-KEyGA3_XUeqsPM_u7P-pEzNxEnT8fzhvxT7fFTNJHb-Slq4hjLfrby_BuGPp8i5ZsDw-DBR1kcb=s400-w400-h400" alt="Casa Luz" loading="lazy">
+                <div class="stop-num d3-num">7</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">8:00 PM</div>
+                <div class="stop-name">Casa Luz — Final Dinner</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.2</span>
+                  <span class="stop-rating-count">(1,376)</span>
+                  <span class="stop-type">· Rooftop restaurant</span>
+                </div>
+                <div class="stop-preview">Rooftop off Plaça Catalunya. Oysters, updated Catalan food…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Rooftop terrace off Plaça Catalunya. Updated Catalan food, great oysters, always good music. Your last night in the city — make it count.<div class="stop-addr">📍 Ronda de la Universitat 1, Eixample</div></div>
+          </div>
+
+        </div>
+        <div class="panel-footer">
+          <button class="day-nav-btn" onclick="showSlide('day2')">← Gaudí Day</button>
+          <div class="day-indicator">
+            <button class="day-dot" onclick="showSlide('day1')"></button>
+            <button class="day-dot" onclick="showSlide('day2')"></button>
+            <button class="day-dot active" onclick="showSlide('day3')"></button>
+          </div>
+          <button class="day-nav-btn" onclick="showSlide('cover')">↺ Cover</button>
+        </div>
+      </div>
+      <div class="map-panel">
+        <div id="map3"></div>
+        <div class="map-overlay"><strong>Gothic → Born → Montjuïc</strong>Morning is walkable. Taxi to Montjuïc at 4pm.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+var days = {
+  day1: { center:[41.3889,2.1670], zoom:15, color:'#2979b8',
+    stops:[{ lat:41.3889, lng:2.1670, name:'Ciudad Condal', time:'8:30 PM', note:'Arrival tapas. Counter seats. Far right corner.' }] },
+  day2: { center:[41.399,2.162], zoom:13, color:'#6c3fc4',
+    stops:[
+      { lat:41.4036, lng:2.1744, name:'Sagrada Família', time:'9:00 AM', note:'Book weeks ahead. 90 min budget. Morning light is best.' },
+      { lat:41.4145, lng:2.1527, name:'Park Güell', time:'11:30 AM', note:'Taxi up. Book at parkguell.barcelona.' },
+      { lat:41.3906, lng:2.1684, name:'El Nacional', time:'1:30 PM', note:'Food hall lunch. Four restaurants, one roof. Reserve ahead.' },
+      { lat:41.3952, lng:2.1619, name:'La Pedrera', time:'4:00 PM', note:'Rooftop by 5pm for the November sunset.' }
+    ]},
+  day3: { center:[41.381,2.176], zoom:13, color:'#0e9e72',
+    stops:[
+      { lat:41.3817, lng:2.1716, name:'La Boqueria', time:'9:30 AM', note:'Go early. 45 min max.' },
+      { lat:41.3839, lng:2.1821, name:'Santa Maria del Mar', time:'10:45 AM', note:'Finest Catalan Gothic. Climb the roof.' },
+      { lat:41.3840, lng:2.1834, name:'Cal Pep', time:'1:00 PM', note:'Arrive at 1pm for counter seats.' },
+      { lat:41.3832, lng:2.1773, name:'Gelaaati di Marco', time:'2:30 PM', note:'Best gelato in Barcelona. Get the pistachio.' },
+      { lat:41.3854, lng:2.1841, name:'Mercat del Born', time:'3:00 PM', note:'Roman ruins under a glass market hall.' },
+      { lat:41.3687, lng:2.1635, name:'Montjuïc Cable Car', time:'4:15 PM', note:'Taxi from Born (~15 min). Castle at the top.' },
+      { lat:41.3862, lng:2.1649, name:'Casa Luz', time:'8:00 PM', note:'Rooftop dinner. Final night.' }
+    ]}
+};
+
+var maps={}, markersMap={}, mapsInited={day1:false,day2:false,day3:false};
+
+function initMap(dayKey){
+  if(mapsInited[dayKey]) return;
+  mapsInited[dayKey]=true;
+  var d=days[dayKey];
+  var mapId=dayKey==='day1'?'map':(dayKey==='day2'?'map2':'map3');
+  var m=L.map(mapId,{center:d.center,zoom:d.zoom,zoomControl:true});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains:'abcd', maxZoom:19
+  }).addTo(m);
+  maps[dayKey]=m; markersMap[dayKey]=[];
+  var lls=[];
+  d.stops.forEach(function(s,i){
+    var svg='<svg xmlns="http://www.w3.org/2000/svg" width="38" height="48" viewBox="0 0 38 48">'
+      +'<filter id="sh'+i+'"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="rgba(0,0,0,0.3)"/></filter>'
+      +'<path d="M19 0C8.51 0 0 8.51 0 19c0 12.5 17 29 19 29s19-16.5 19-29C38 8.51 29.49 0 19 0z" fill="'+d.color+'" filter="url(#sh'+i+')"/>'
+      +'<circle cx="19" cy="19" r="11" fill="rgba(255,255,255,0.2)"/>'
+      +'<text x="19" y="24" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="800" fill="white">'+(i+1)+'</text>'
+      +'</svg>';
+    var icon=L.divIcon({html:svg,iconSize:[38,48],iconAnchor:[19,48],popupAnchor:[0,-50],className:''});
+    var popup=L.popup({maxWidth:220}).setContent(
+      '<div class="popup-title">'+s.name+'</div>'
+      +'<div class="popup-time">'+s.time+'</div>'
+      +'<div class="popup-body">'+s.note+'</div>'
+    );
+    var marker=L.marker([s.lat,s.lng],{icon:icon}).addTo(m).bindPopup(popup);
+    markersMap[dayKey].push(marker);
+    lls.push([s.lat,s.lng]);
+  });
+  if(lls.length>1) L.polyline(lls,{color:d.color,weight:3.5,opacity:0.7,dashArray:'7 9'}).addTo(m);
+  if(markersMap[dayKey].length) markersMap[dayKey][0].openPopup();
+}
+
+function showSlide(id){
+  document.querySelectorAll('.slide').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('slide-'+id).classList.add('active');
+  if(id!=='cover'){
+    setTimeout(function(){
+      initMap(id);
+      if(maps[id]) maps[id].invalidateSize();
+    },80);
+  }
+}
+
+function selectStop(el,dayKey,idx){
+  document.getElementById('stops-'+dayKey).querySelectorAll('.stop-item').forEach(function(s){s.classList.remove('active');});
+  el.classList.add('active');
+  var m=maps[dayKey], markers=markersMap[dayKey];
+  if(m&&markers&&markers[idx]){
+    m.setView([days[dayKey].stops[idx].lat,days[dayKey].stops[idx].lng],15,{animate:true});
+    markers[idx].openPopup();
+  }
+}
+
+var order=['cover','day1','day2','day3'],cur=0;
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'&&cur<order.length-1){cur++;showSlide(order[cur]);}
+  else if(e.key==='ArrowLeft'&&cur>0){cur--;showSlide(order[cur]);}
+});
+var _orig=showSlide;
+showSlide=function(id){cur=order.indexOf(id);_orig(id);};
+</script>
+</body>
+</html>
