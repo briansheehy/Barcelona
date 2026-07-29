@@ -525,23 +525,25 @@
 <script>
 var days = {
   day1: { center:[41.3889,2.1670], zoom:15, color:'#2979b8',
-    stops:[{ lat:41.3889, lng:2.1670, name:'Ciudad Condal', time:'8:30 PM', note:'Arrival tapas. Counter seats. Far right corner.' }] },
-  day2: { center:[41.399,2.162], zoom:13, color:'#6c3fc4',
     stops:[
-      { lat:41.4036, lng:2.1744, name:'Sagrada Família', time:'9:00 AM', note:'Book weeks ahead. 90 min budget. Morning light is best.' },
-      { lat:41.4145, lng:2.1527, name:'Park Güell', time:'11:30 AM', note:'Taxi up. Book at parkguell.barcelona.' },
-      { lat:41.3906, lng:2.1684, name:'El Nacional', time:'1:30 PM', note:'Food hall lunch. Four restaurants, one roof. Reserve ahead.' },
-      { lat:41.3952, lng:2.1619, name:'La Pedrera', time:'4:00 PM', note:'Rooftop by 5pm for the November sunset.' }
+      { lat:41.38885, lng:2.16700, name:'Ciudad Condal', time:'8:30 PM', note:'Arrival tapas. Counter seats. Far right corner.' }
     ]},
-  day3: { center:[41.381,2.176], zoom:13, color:'#0e9e72',
+  day2: { center:[41.402,2.160], zoom:13, color:'#6c3fc4',
     stops:[
-      { lat:41.3817, lng:2.1716, name:'La Boqueria', time:'9:30 AM', note:'Go early. 45 min max.' },
-      { lat:41.3839, lng:2.1821, name:'Santa Maria del Mar', time:'10:45 AM', note:'Finest Catalan Gothic. Climb the roof.' },
-      { lat:41.3840, lng:2.1834, name:'Cal Pep', time:'1:00 PM', note:'Arrive at 1pm for counter seats.' },
-      { lat:41.3832, lng:2.1773, name:'Gelaaati di Marco', time:'2:30 PM', note:'Best gelato in Barcelona. Get the pistachio.' },
-      { lat:41.3854, lng:2.1841, name:'Mercat del Born', time:'3:00 PM', note:'Roman ruins under a glass market hall.' },
-      { lat:41.3687, lng:2.1635, name:'Montjuïc Cable Car', time:'4:15 PM', note:'Taxi from Born (~15 min). Castle at the top.' },
-      { lat:41.3862, lng:2.1649, name:'Casa Luz', time:'8:00 PM', note:'Rooftop dinner. Final night.' }
+      { lat:41.40363, lng:2.17436, name:'Sagrada Família', time:'9:00 AM',  note:'Book weeks ahead. 90 min budget. Morning light is best.' },
+      { lat:41.41449, lng:2.15269, name:'Park Güell',      time:'11:30 AM', note:'Taxi up. Book at parkguell.barcelona.' },
+      { lat:41.39058, lng:2.16839, name:'El Nacional',     time:'1:30 PM',  note:'Food hall lunch. Four restaurants, one roof. Reserve ahead.' },
+      { lat:41.39522, lng:2.16190, name:'La Pedrera',      time:'4:00 PM',  note:'Rooftop by 5pm for the November sunset.' }
+    ]},
+  day3: { center:[41.379,2.172], zoom:13, color:'#0e9e72',
+    stops:[
+      { lat:41.38174, lng:2.17158, name:'La Boqueria',          time:'9:30 AM',  note:'Go early. 45 min max.' },
+      { lat:41.38389, lng:2.18207, name:'Santa Maria del Mar',  time:'10:45 AM', note:'Finest Catalan Gothic. Climb the roof.' },
+      { lat:41.38396, lng:2.18341, name:'Cal Pep',              time:'1:00 PM',  note:'Arrive at 1pm for counter seats.' },
+      { lat:41.38321, lng:2.17730, name:'Gelaaati di Marco',    time:'2:30 PM',  note:'Best gelato in Barcelona. Get the pistachio.' },
+      { lat:41.38540, lng:2.18410, name:'Mercat del Born',      time:'3:00 PM',  note:'Roman ruins under a glass market hall.' },
+      { lat:41.36872, lng:2.16349, name:'Montjuïc Cable Car',   time:'4:15 PM',  note:'Taxi from Born (~15 min). Castle at the top.' },
+      { lat:41.38624, lng:2.16488, name:'Casa Luz',             time:'8:00 PM',  note:'Rooftop dinner. Final night.' }
     ]}
 };
 
@@ -560,12 +562,12 @@ function initMap(dayKey){
   maps[dayKey]=m; markersMap[dayKey]=[];
   var lls=[];
   d.stops.forEach(function(s,i){
-    var svg='<svg xmlns="http://www.w3.org/2000/svg" width="38" height="48" viewBox="0 0 38 48">'
-      +'<filter id="sh'+i+'"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="rgba(0,0,0,0.3)"/></filter>'
-      +'<path d="M19 0C8.51 0 0 8.51 0 19c0 12.5 17 29 19 29s19-16.5 19-29C38 8.51 29.49 0 19 0z" fill="'+d.color+'" filter="url(#sh'+i+')"/>'
+    var svg='<div style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.35));line-height:0;">'
+      +'<svg xmlns="http://www.w3.org/2000/svg" width="38" height="48" viewBox="0 0 38 48">'
+      +'<path d="M19 0C8.51 0 0 8.51 0 19c0 12.5 17 29 19 29s19-16.5 19-29C38 8.51 29.49 0 19 0z" fill="'+d.color+'"/>'
       +'<circle cx="19" cy="19" r="11" fill="rgba(255,255,255,0.2)"/>'
       +'<text x="19" y="24" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="800" fill="white">'+(i+1)+'</text>'
-      +'</svg>';
+      +'</svg></div>';
     var icon=L.divIcon({html:svg,iconSize:[38,48],iconAnchor:[19,48],popupAnchor:[0,-50],className:''});
     var popup=L.popup({maxWidth:220}).setContent(
       '<div class="popup-title">'+s.name+'</div>'
