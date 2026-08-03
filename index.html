@@ -208,8 +208,8 @@
           </div>
 
           <div class="hotel-note">
-            <div class="hotel-note-label">Hotel search zone</div>
-            <div class="hotel-note-body">Look between <strong>Passeig de Gràcia</strong>, <strong>Rambla de Catalunya</strong>, and <strong>Gran Via</strong> — 5 min walk from tonight's dinner and central for both full days.</div>
+            <div class="hotel-note-label">🏨 Your Hotel</div>
+            <div class="hotel-note-body">La Rambla 111 / Carrer del Pintor Fortuny 4–6, Barcelona 08001. Right on Las Ramblas — walkable to Ciudad Condal tonight and to La Boqueria on Day 3.</div>
           </div>
 
         </div>
@@ -580,6 +580,17 @@ function initMap(dayKey){
   });
   if(lls.length>1) L.polyline(lls,{color:d.color,weight:3.5,opacity:0.7,dashArray:'7 9'}).addTo(m);
   if(markersMap[dayKey].length) markersMap[dayKey][0].openPopup();
+
+  // Hotel marker — shown on all days
+  var hotelSvg='<div style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));line-height:0;">'
+    +'<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">'
+    +'<circle cx="18" cy="18" r="18" fill="#1a1a2e"/>'
+    +'<text x="18" y="23" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17">🏨</text>'
+    +'</svg></div>';
+  var hotelIcon=L.divIcon({html:hotelSvg,iconSize:[36,36],iconAnchor:[18,18],popupAnchor:[0,-20],className:''});
+  L.marker([41.38371,2.17113],{icon:hotelIcon})
+    .addTo(m)
+    .bindPopup('<div class="popup-title">Your Hotel</div><div class="popup-body">La Rambla 111 / Carrer del Pintor Fortuny 4–6<br>Barcelona 08001</div>');
 }
 
 function showSlide(id){
