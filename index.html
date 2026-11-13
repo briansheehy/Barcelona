@@ -808,7 +808,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
   .tile-notice { position:absolute; left:14px; right:14px; bottom:34px; z-index:600; background:#fff8e6; border:1px solid #f1d58a; color:#5a4a00; border-radius:10px; padding:10px 13px; font-size:12px; line-height:1.5; box-shadow:0 2px 12px rgba(0,0,0,0.12); }
   .tile-notice a { color:#7a5a00; font-weight:700; }
-  .gmaps-btn { position:absolute; left:14px; top:14px; z-index:500; background:#fff; color:#1a1a2e; border:1px solid var(--border); border-radius:8px; padding:7px 12px; font-size:12px; font-weight:700; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,0.12); }
+  .gmaps-btn { position:absolute; left:62px; top:14px; z-index:500; background:#fff; color:#1a1a2e; border:1px solid var(--border); border-radius:8px; padding:7px 12px; font-size:12px; font-weight:700; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,0.12); }
   .gmaps-btn:hover { background:#f3f4f7; }
 
 
@@ -827,6 +827,25 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .break-body { font-size:12px; line-height:1.55; color:#34406b; }
   .legend-dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:middle; }
 
+
+  :root { --d4: #1d6fd6; }
+  .d4-color { color: #7db8ff; }
+  .d4-badge { background: #e6f0fd; color: #1555a8; border: 1px solid #bcd5f5; }
+  .stop-item.d4.active { --accent-color: var(--d4); }
+  .d4-num { background: var(--d4); }
+  .stop-thumb-ph.blue { background:#e6f0fd; }
+  .view-chips { position:absolute; left:50%; transform:translateX(-50%); top:14px; z-index:500; display:flex; gap:6px; }
+  .view-chips button { background:#fff; color:#1a1a2e; border:1px solid var(--border); border-radius:8px; padding:7px 11px; font-size:12px; font-weight:700; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.12); }
+  .view-chips button:hover { background:#f3f4f7; }
+
+
+  :root { --d5: #a4243b; }
+  .d5-color { color: #ff9fb0; }
+  .d5-badge { background: #fbe9ed; color: #8a1d31; border: 1px solid #f0c3cc; }
+  .stop-item.d5.active { --accent-color: var(--d5); }
+  .d5-num { background: var(--d5); }
+  .stop-thumb-ph.wine { background:#fbe9ed; }
+
   /* ── HOTEL NOTE ── */
   .hotel-note { margin-top: 10px; padding: 12px 13px; background: #fffbf0; border-radius: 9px; border: 1px solid #fde8a8; }
   .hotel-note-label { font-size: 11px; color: #b07d00; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; font-weight: 700; }
@@ -839,7 +858,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <!-- COVER -->
   <div class="slide active" id="slide-cover">
     <div class="cover" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px; height:100%;">
-      <div class="cover-eyebrow">Family Trip · Nov 23–26, 2024</div>
+      <div class="cover-eyebrow">Family Trip · Nov 23–29, 2026</div>
       <div class="cover-title">Barce<span>lona</span></div>
       <div class="cover-sub">2 full days + arrival evening &nbsp;·&nbsp; Ages 11 &amp; 16 &nbsp;·&nbsp; Eixample base</div>
       <div class="cover-days">
@@ -856,7 +875,17 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="cover-day-card" onclick="showSlide('day3')">
           <div class="label d3-color">Wed Nov 25</div>
           <div class="name">Old City + Born</div>
-          <div class="desc">Gothic → Born → Castle → Dinner</div>
+          <div class="desc">Gothic → Born → Dinner</div>
+        </div>
+        <div class="cover-day-card" onclick="showSlide('day4')">
+          <div class="label d4-color">Fri Nov 27</div>
+          <div class="name">Bilbao Day Trip</div>
+          <div class="desc">Bus → Guggenheim → Pintxos</div>
+        </div>
+        <div class="cover-day-card" onclick="showSlide('day5')">
+          <div class="label d5-color">Sun Nov 29</div>
+          <div class="name">Rioja Day Trip</div>
+          <div class="desc">Drive → Haro wineries → Tapas</div>
         </div>
       </div>
       <button class="cover-start-btn" onclick="showSlide('day1')">Start with Day 1 →</button>
@@ -911,6 +940,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button class="day-dot active" onclick="showSlide('day1')"></button>
             <button class="day-dot" onclick="showSlide('day2')"></button>
             <button class="day-dot" onclick="showSlide('day3')"></button>
+            <button class="day-dot" onclick="showSlide('day4')"></button>
+            <button class="day-dot" onclick="showSlide('day5')"></button>
           </div>
           <button class="day-nav-btn" onclick="showSlide('day2')">Gaudí Day →</button>
         </div>
@@ -1161,6 +1192,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button class="day-dot" onclick="showSlide('day1')"></button>
             <button class="day-dot active" onclick="showSlide('day2')"></button>
             <button class="day-dot" onclick="showSlide('day3')"></button>
+            <button class="day-dot" onclick="showSlide('day4')"></button>
+            <button class="day-dot" onclick="showSlide('day5')"></button>
           </div>
           <button class="day-nav-btn" onclick="showSlide('day3')">Day 3 →</button>
         </div>
@@ -1340,13 +1373,606 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button class="day-dot" onclick="showSlide('day1')"></button>
             <button class="day-dot" onclick="showSlide('day2')"></button>
             <button class="day-dot active" onclick="showSlide('day3')"></button>
+            <button class="day-dot" onclick="showSlide('day4')"></button>
+            <button class="day-dot" onclick="showSlide('day5')"></button>
           </div>
-          <button class="day-nav-btn" onclick="showSlide('cover')">↺ Cover</button>
+          <button class="day-nav-btn" onclick="showSlide('day4')">Bilbao Day →</button>
         </div>
       </div>
       <div class="map-panel">
         <div id="map3"></div>
         <div class="map-overlay"><strong>Gothic → Born</strong>Walkable day. Montjuïc Cable Car is an optional add-on in orange.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="slide" id="slide-day4">
+    <div class="day-slide">
+      <div class="left-panel">
+        <div class="panel-header">
+          <button class="back-btn" onclick="showSlide('cover')">← Overview</button>
+          <div class="day-badge d4-badge">Friday, Nov 27</div>
+          <div class="panel-title">Bilbao Day Trip</div>
+          <div class="panel-sub">11:00 AM bus from San Sebastián, pintxos lunch, the Guggenheim, home by the evening bus.</div>
+        </div>
+        <div class="stops-list" id="stops-day4">
+
+          <div class="stop-item d4 active" onclick="selectStop(this,'day4',0)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph blue">🚌</div>
+                <div class="stop-num d4-num">1</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">11:00 AM</div>
+                <div class="stop-name">San Sebastián Bus Station</div>
+                <div class="stop-rating"><span class="stop-type">Alsa coach to Bilbao</span></div>
+                <div class="stop-preview">About 1h 20m ride. Be there by 10:40…</div>
+              </div>
+            </div>
+            <div class="stop-detail">About a 10 minute walk from your apartment on Okendo Kalea (roughly 0.5 km). Long-distance coaches leave from the underground level, regional buses from outside, so follow the signs down. Buy the Alsa ticket ahead at alsa.com (fares from about €8 each way, so under-12s may be cheaper). Allow about 1h 20m for the ride. Confirm the exact Friday departure when you book.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.3174159,-1.9774257" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Federico García Lorca Pasealekua 1</a></div></div>
+          </div>
+
+          <div class="stop-item d4" onclick="selectStop(this,'day4',1)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph blue">🚇</div>
+                <div class="stop-num d4-num">2</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">~12:20 PM</div>
+                <div class="stop-name">Bilbao Bus Station (Termibus)</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.3</span>
+                  <span class="stop-rating-count">(7,424)</span>
+                  <span class="stop-type">· Arrival</span>
+                </div>
+                <div class="stop-preview">Metro from the station to the Old Town…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Arrives at Termibus, Gurtubay Kalea 1, which is connected to the San Mamés metro station. Take the metro toward Casco Viejo, about 10 minutes door to door. A taxi is also a short ride if you want to skip the transfer.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2611732,-2.9495937" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Gurtubay Kalea 1, Bilbao</a></div></div>
+          </div>
+
+          <div class="stop-item d4" onclick="selectStop(this,'day4',2)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph blue">🍽️</div>
+                <div class="stop-num d4-num">3</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">12:45 PM</div>
+                <div class="stop-name">Pintxos lunch, Casco Viejo</div>
+                <div class="stop-rating"><span class="stop-type">Plaza Nueva</span></div>
+                <div class="stop-preview">Pick two or three bars and share…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Do a mini crawl on and around Plaza Nueva. Take what you want from the counter and tell the bartender what you had when you pay. Start with Sorgínzulo for the giant fried calamari, then Gure Toki for the classics, or Bar Santamaría and Baster (brioche buns, calamari sandwich) for something the kids will like. All of the options are in orange below.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.259255,-2.92302" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Plaza Nueva, Casco Viejo</a></div></div>
+          </div>
+
+          <div class="stop-item d4" onclick="selectStop(this,'day4',3)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph blue">🏛️</div>
+                <div class="stop-num d4-num">4</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">3:00 PM</div>
+                <div class="stop-name">Guggenheim Museum Bilbao</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.5</span>
+                  <span class="stop-rating-count">(99,095)</span>
+                  <span class="stop-type">· Museum</span>
+                </div>
+                <div class="stop-preview">Book a timed ticket for about 3:00…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Open 10:00 to 19:00 on Fridays. Adults €15, under-18s free. Book a timed ticket online in advance, since tickets cannot be changed. Allow 2 to 2.5 hours. From Plaza Nueva it is a 25 to 30 minute walk along the river, or about 10 minutes by tram or taxi. Check the Puppy and Maman sculptures outside.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2686712,-2.9340118" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Abandoibarra Etorb. 2, Bilbao</a></div></div>
+          </div>
+
+          <div class="stop-item d4" onclick="selectStop(this,'day4',4)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph blue">🚌</div>
+                <div class="stop-num d4-num">5</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">7:30 PM</div>
+                <div class="stop-name">Bus back from Termibus</div>
+                <div class="stop-rating"><span class="stop-type">Alsa coach to San Sebastián</span></div>
+                <div class="stop-preview">Plan on a 7:30 PM bus. Buy ahead…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Plan on the 7:30 PM Alsa coach, about 1h 10m to 1h 20m, back to San Sebastián. Leave the Old Town by about 6:45 PM for the metro to Termibus. Evening Alsa departures I found for similar weekdays were 6:30 PM and 7:30 PM, but I could not confirm the Friday Nov 27 timetable, so check alsa.com and book the return ticket in advance.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2611732,-2.9495937" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Gurtubay Kalea 1, Bilbao</a></div></div>
+          </div>
+
+          <div class="break-note">
+            <div class="break-label">Buses to check on alsa.com</div>
+            <div class="break-body">
+              <strong>Out:</strong> San Sebastián to Bilbao, 11:00 AM target. About 1h 20m, from about €8.<br>
+              <strong>Back:</strong> Bilbao to San Sebastián. Similar weekdays showed 6:30 PM and 7:30 PM Alsa coaches. Alsa lists its last Bilbao departure at 10:00 PM, but confirm the Friday timetable and buy tickets ahead.<br>
+              <strong>Home:</strong> the bus station is about a 10 minute walk from the apartment.
+            </div>
+          </div>
+
+          <div class="opt-header">Pintxos options in Casco Viejo, choose on the spot</div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',5)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍢</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Lunch option</div>
+                <div class="stop-name">Gure Toki</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.5</span>
+                  <span class="stop-rating-count">(5,736)</span>
+                  <span class="stop-type">· Pintxos</span>
+                </div>
+                <div class="stop-preview">Famous Plaza Nueva counter…</div>
+              </div>
+            </div>
+            <div class="stop-detail">The famous one, with a counter of creative pintxos. Get the classics, such as the Gilda and the Idiazabal cheese soup with quail egg, and ask for the hot specials. Busy and rushed at peak times. Open 10:00 AM to 11:00 PM on Friday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2593788,-2.9222899" target="_blank" rel="noopener">Plaza Berria 12, Casco Viejo</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',6)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🦑</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Lunch option</div>
+                <div class="stop-name">Sorgínzulo</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.5</span>
+                  <span class="stop-rating-count">(4,258)</span>
+                  <span class="stop-type">· Pintxos</span>
+                </div>
+                <div class="stop-preview">Giant calamari, cod pil-pil…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Plaza Nueva. Reviewers love the huge fried calamari (ask for aioli), the cod in pil-pil sauce, duck in pastry and foie gras with brioche. More relaxed, with terrace seating. Open 9:30 AM to 10:30 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2591109,-2.9222832" target="_blank" rel="noopener">Plaza Berria 12, Casco Viejo</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',7)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍤</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Lunch option</div>
+                <div class="stop-name">Bar Santamaría</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(2,026)</span>
+                  <span class="stop-type">· Hot pintxos</span>
+                </div>
+                <div class="stop-preview">Cooked to order, a local favorite…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Hot pintxos cooked to order, like foie gras with apple and grilled cuttlefish. One reviewer called it the best food they had in Bilbao. Open 10:00 AM to midnight on Friday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2577798,-2.925547" target="_blank" rel="noopener">Andra Maria Kalea 18, Casco Viejo</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',8)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🥖</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Lunch option</div>
+                <div class="stop-name">Baster</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.5</span>
+                  <span class="stop-rating-count">(2,465)</span>
+                  <span class="stop-type">· Tiny and lively</span>
+                </div>
+                <div class="stop-preview">Calamari sandwich, brioche buns…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Tiny, loud and fun. Try the calamari sandwich and the brioche buns with octopus or pulled pork, which are good for kids. House vermouth for the adults. Open 11:30 AM to 11:00 PM on Friday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2575308,-2.9235856" target="_blank" rel="noopener">Posta Kalea 22, Casco Viejo</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',9)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🛒</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Option</div>
+                <div class="stop-name">Mercado de la Ribera</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(34,526)</span>
+                  <span class="stop-type">· Market and pintxos</span>
+                </div>
+                <div class="stop-preview">Pintxos stalls on the river…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Large covered market on the river with an aisle of pintxos bars, about €2.50 each in 2026 per one reviewer. Open until midnight. A good fallback for an early dinner before the bus, though a few reviewers found the pintxos reheated.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2555913,-2.9242454" target="_blank" rel="noopener">Erribera Kalea 20 bis, Casco Viejo</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',10)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🚡</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Optional, ~5:00 PM</div>
+                <div class="stop-name">Artxanda Funicular</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(7,718)</span>
+                  <span class="stop-type">· Views</span>
+                </div>
+                <div class="stop-preview">Short ride up for city views…</div>
+              </div>
+            </div>
+            <div class="stop-detail">A 3 minute ride to a viewpoint over Bilbao, about €6 round trip. Reviews are mixed (long queues in summer, not much else at the top), so it is only worth it if you have spare time and good light before the bus. Sunset is around 5:45 PM in late November.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2740084,-2.9202094" target="_blank" rel="noopener">Carretera Artxanda-Santo Domingo 27, Bilbao</a></div></div>
+          </div>
+
+        </div>
+        <div class="panel-footer">
+          <button class="day-nav-btn" onclick="showSlide('day3')">← Day 3</button>
+          <div class="day-indicator">
+            <button class="day-dot" onclick="showSlide('day1')"></button>
+            <button class="day-dot" onclick="showSlide('day2')"></button>
+            <button class="day-dot" onclick="showSlide('day3')"></button>
+            <button class="day-dot active" onclick="showSlide('day4')"></button>
+            <button class="day-dot" onclick="showSlide('day5')"></button>
+          </div>
+          <button class="day-nav-btn" onclick="showSlide('day5')">Rioja Day →</button>
+        </div>
+      </div>
+      <div class="map-panel">
+        <div id="map4"></div>
+        <div class="view-chips">
+          <button onclick="setView4('both')">Both cities</button>
+          <button onclick="setView4('bilbao')">Bilbao</button>
+          <button onclick="setView4('ss')">San Sebastián</button>
+        </div>
+        <div class="map-overlay"><strong>San Sebastián → Bilbao</strong><span class="legend-dot" style="background:#1d6fd6"></span>Main plan<br><span class="legend-dot" style="background:#e8830c"></span>Optional pintxos and views<br>🏨 Your apartment on Okendo Kalea</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="slide" id="slide-day5">
+    <div class="day-slide">
+      <div class="left-panel">
+        <div class="panel-header">
+          <button class="back-btn" onclick="showSlide('cover')">← Overview</button>
+          <div class="day-badge d5-badge">Sunday, Nov 29</div>
+          <div class="panel-title">Rioja Day Trip</div>
+          <div class="panel-sub">Drive to Haro, pop into the wine bars around the train station, then lunch in the old town.</div>
+        </div>
+        <div class="stops-list" id="stops-day5">
+
+          <div class="break-note">
+            <div class="break-label">Pop-in tasting, no tours</div>
+            <div class="break-body">
+              <strong>The drive:</strong> leave San Sebastián around 9:15 AM. Haro is roughly 170 km, about 2 hours, so you arrive around 11:15 to 11:30. I did not look up the route or tolls, so check Google Maps.<br>
+              <strong>The idea:</strong> park once in the Barrio de la Estación and walk between wine bars. Each winery's own page lists these wine bars as open Sunday, but none of the pages say whether you need to book or can walk in, so a quick call or email beforehand is smart.<br>
+              <strong>Driver:</strong> pours add up. Pick a designated driver, or arrange a local taxi or private driver ahead (the Barrio lists services).
+            </div>
+          </div>
+
+          <div class="stop-item d5 active" onclick="selectStop(this,'day5',0)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph wine">🍷</div>
+                <div class="stop-num d5-num">1</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">11:30 AM</div>
+                <div class="stop-name">Roda Wine Bar</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(384)</span>
+                  <span class="stop-type">· Wine bar, open daily</span>
+                </div>
+                <div class="stop-preview">Open Sunday 10:30 AM to 3:00 PM…</div>
+              </div>
+            </div>
+            <div class="stop-detail">The winery runs a wine bar open every day from 10:30 AM to 3:00 PM, including Sunday. An article describes it as wine with a light appetizer, often paired with the house olive oil. The pages do not say whether walk-ins are accepted, so call +34 669 776 564 to confirm.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5851955,-2.846647" target="_blank" rel="noopener" style="color:#8a1d31;text-decoration:none">Avenida Vizcaya 5, Barrio de la Estación</a></div></div>
+          </div>
+
+          <div class="stop-item d5" onclick="selectStop(this,'day5',1)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph wine">🏛️</div>
+                <div class="stop-num d5-num">2</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">12:20 PM</div>
+                <div class="stop-name">La Rioja Alta wine bar</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.7</span>
+                  <span class="stop-rating-count">(1,137)</span>
+                  <span class="stop-type">· El Garaje del Club de Cosecheros</span>
+                </div>
+                <div class="stop-preview">Garden terrace, glass by the glass…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Wine bar with terraces where you taste current and older vintages by the glass with tapas, without a formal tasting. Saturday and Sunday hours are 11:00 AM to 3:00 PM. The phone is +34 941 310 346 if you want to check walk-ins. About a 2 minute walk from Roda.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5844855,-2.8466665" target="_blank" rel="noopener" style="color:#8a1d31;text-decoration:none">Avenida Vizcaya 8, Barrio de la Estación</a></div></div>
+          </div>
+
+          <div class="stop-item d5" onclick="selectStop(this,'day5',2)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph wine">🍇</div>
+                <div class="stop-num d5-num">3</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">1:10 PM</div>
+                <div class="stop-name">CVNE wine bar</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.5</span>
+                  <span class="stop-rating-count">(964)</span>
+                  <span class="stop-type">· Wine bar and shop</span>
+                </div>
+                <div class="stop-preview">Open Sunday 9:00 AM to 2:00 PM…</div>
+              </div>
+            </div>
+            <div class="stop-detail">A modern wine bar near the Eiffel warehouse, with tastings of CVNE, Viña Real and Imperial wines with Rioja pinchos, cheese and ham. The wine bar and shop are open Sunday 9:00 AM to 2:00 PM, so do this one last before it closes. Tours are separate and need booking, but you are skipping those. The Barrio Passport is collected here.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5815315,-2.8488812" target="_blank" rel="noopener" style="color:#8a1d31;text-decoration:none">Avenida Costa del Vino 21, Barrio de la Estación</a></div></div>
+          </div>
+
+          <div class="stop-item d5" onclick="selectStop(this,'day5',3)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph wine">🍽️</div>
+                <div class="stop-num d5-num">4</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">2:30 PM</div>
+                <div class="stop-name">Lunch in Haro Old Town</div>
+                <div class="stop-rating"><span class="stop-type">Sit-down or pintxos</span></div>
+                <div class="stop-preview">Pick from the orange options below…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Haro is a 10 to 15 minute walk from the Barrio, or a short drive. Sunday kitchens close at about 3:30 PM for the tapas bars and 4:00 to 5:00 PM for the restaurants, so sit down by about 2:30. A few of the sit-down places want reservations, noted below.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5776,-2.8461" target="_blank" rel="noopener" style="color:#8a1d31;text-decoration:none">Calle Santo Tomás, Haro</a></div></div>
+          </div>
+
+          <div class="stop-item d5" onclick="selectStop(this,'day5',4)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph wine">🌆</div>
+                <div class="stop-num d5-num">5</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">4:15 PM</div>
+                <div class="stop-name">Plaza de la Paz stroll</div>
+                <div class="stop-rating"><span class="stop-type">Haro</span></div>
+                <div class="stop-preview">Short walk, then drive home…</div>
+              </div>
+            </div>
+            <div class="stop-detail">A short wander around the old town and Plaza de la Paz. Leave by about 5:00 PM for the drive back, which should have you home around 7:15 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5771518,-2.8468027" target="_blank" rel="noopener" style="color:#8a1d31;text-decoration:none">Plaza de la Paz, Haro</a></div></div>
+          </div>
+
+          <div class="opt-header">More tasting rooms, choose on the spot</div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day5',5)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🥂</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Terrace 12:00 to 2:30 PM</div>
+                <div class="stop-name">Bodegas Muga terrace</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(1,479)</span>
+                  <span class="stop-type">· Wine by the glass</span>
+                </div>
+                <div class="stop-preview">Terrace, no booking per one article…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Muga has an outdoor terrace serving wine by the glass or bottle with Rioja snacks, and one article says it runs without a prior reservation. Muga lists the shop, terrace and wine bar as open daily 12:00 to 2:30 PM, but Google shows it closed on Sunday. Call +34 941 30 60 60 to confirm before counting on it.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5829868,-2.8473474" target="_blank" rel="noopener">Avenida Vizcaya 2, Barrio de la Estación</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day5',6)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍷</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Sunday 10:00 AM to 2:30 PM</div>
+                <div class="stop-name">Bodegas Gómez Cruzado</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.9</span>
+                  <span class="stop-rating-count">(986)</span>
+                  <span class="stop-type">· Wine bar and flights</span>
+                </div>
+                <div class="stop-preview">Cata Flight, five wines…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Offers a quicker option than a tour, a "Cata Flight" of five wines, plus tastings of classic reds and limited village wines. Reviewers rave about the hosts. Google shows Sunday hours of 10:00 AM to 2:30 PM. Call +34 941 31 25 02 to confirm walk-ins.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5837957,-2.8474315" target="_blank" rel="noopener">Avenida Vizcaya 6, Barrio de la Estación</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day5',7)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🧀</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Sunday 11:30 AM to 3:00 PM</div>
+                <div class="stop-name">Bodegas TIHOM</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.9</span>
+                  <span class="stop-rating-count">(510)</span>
+                  <span class="stop-type">· Wine bar with tapas</span>
+                </div>
+                <div class="stop-preview">A tapa with every glass…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Reviewers highlight a tapa with each glass and warm hosts. One reviewer said tastings do not start until noon. Open Sunday 11:30 AM to 3:00 PM per Google. Confirm before you go.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5802531,-2.850266" target="_blank" rel="noopener">Avenida Costa del Vino 7, Barrio de la Estación</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day5',8)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🥂</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Sunday 11:00 AM to 2:00 PM</div>
+                <div class="stop-name">Bodegas Bilbaínas</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(720)</span>
+                  <span class="stop-type">· Wine bar and tasting</span>
+                </div>
+                <div class="stop-preview">Flight with chocolate pairing…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Reviewers mention a flight with a chocolate pairing and a sparkling wine made from red grapes. Open Sunday 11:00 AM to 2:00 PM per Google. It is less clearly a drop-in wine bar than the others.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5838792,-2.8512666" target="_blank" rel="noopener">Calle Estación, Barrio de la Estación</a></div></div>
+          </div>
+
+          <div class="opt-header">Sit-down lunch options in Haro, choose and book</div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day5',9)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🐑</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Sunday 12:00 to 5:00 PM</div>
+                <div class="stop-name">Restaurante Terete</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.3</span>
+                  <span class="stop-rating-count">(3,383)</span>
+                  <span class="stop-type">· Roast lamb</span>
+                </div>
+                <div class="stop-preview">Famous for roast suckling lamb…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Traditional Rioja restaurant known for its suckling lamb, with roast chicken and a long wine list. Big and busy, so reserve. About €€€. Open Sunday 12:00 to 5:00 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5762125,-2.8465936" target="_blank" rel="noopener">Calle Lucrecia Arana 17, Haro</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day5',10)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🐟</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Sunday 1:00 to 4:00 PM</div>
+                <div class="stop-name">El Rincón del Noble</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(1,119)</span>
+                  <span class="stop-type">· Modern Rioja</span>
+                </div>
+                <div class="stop-preview">Highly rated, books up…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Reviewers praise the cod and grouper dishes, the olive oil served with tapas and the warm owner. Often fully booked, so reserve (+34 669 89 96 19). Open Sunday 1:00 to 4:00 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5757222,-2.8493126" target="_blank" rel="noopener">Calle Martínez Lacuesta 11, Haro</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day5',11)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍲</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Sunday 12:30 to 3:30 PM</div>
+                <div class="stop-name">Restaurante Beethoven</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.3</span>
+                  <span class="stop-rating-count">(2,750)</span>
+                  <span class="stop-type">· Local cooking</span>
+                </div>
+                <div class="stop-preview">Beans with chorizo, lamb chops…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Reviewers recommend the beans with chorizo, wild mushrooms and lamb chops. On Calle Santo Tomás. Open Sunday 12:30 to 3:30 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.57737,-2.8462" target="_blank" rel="noopener">Calle Santo Tomás 8, Haro</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day5',12)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🥩</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Sunday 1:00 to 4:30 PM</div>
+                <div class="stop-name">El Jarrero</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(1,812)</span>
+                  <span class="stop-type">· Daily menu</span>
+                </div>
+                <div class="stop-preview">Great-value daily menu…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Reviewers like the daily menu, steak tartare and baked cheesecake, and say it is a good price. Around €35 per person with wine per one reviewer. Open Sunday 1:00 to 4:30 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5776676,-2.8464879" target="_blank" rel="noopener">Calle San Martín 5, Haro</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day5',13)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍽️</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Sunday 1:30 to 3:30 PM</div>
+                <div class="stop-name">Restaurante Alboroque</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.9</span>
+                  <span class="stop-rating-count">(460)</span>
+                  <span class="stop-type">· Small, 4.9 stars</span>
+                </div>
+                <div class="stop-preview">Tiny, book ahead…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Very small and highly rated, and reviewers say walk-ins get turned away, so reserve (+34 941 30 36 43). Usual Sunday hours 1:30 to 3:30 PM, though Google flags special hours for some upcoming dates.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5759739,-2.8504176" target="_blank" rel="noopener">Calle Grecia 1, Haro</a></div></div>
+          </div>
+
+          <div class="opt-header">Casual pintxos bars, choose on the spot</div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day5',14)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🥘</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Sunday 11:30 AM to 3:30 PM</div>
+                <div class="stop-name">Bar El Remolino</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(393)</span>
+                  <span class="stop-type">· Pintxos, home-style</span>
+                </div>
+                <div class="stop-preview">Plaza de la Paz terrace…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Down-to-earth home cooking and pintxos on the old plaza, with a terrace. Reviewers recommend the tuna-stuffed pickle with anchovy.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5773568,-2.8464353" target="_blank" rel="noopener">Calle San Martín 2, Haro</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day5',15)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍄</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Sunday 12:30 to 4:00 PM</div>
+                <div class="stop-name">Bar Chamonix</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">3.7</span>
+                  <span class="stop-rating-count">(1,251)</span>
+                  <span class="stop-type">· Mushrooms and skewers</span>
+                </div>
+                <div class="stop-preview">Famous grilled mushrooms…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Reviewers say the grilled mushrooms are the signature dish, plus scallops and croquetas. Simple and quick. Mixed overall rating of 3.7.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=42.5775909,-2.8460849" target="_blank" rel="noopener">Calle Santo Tomás 14, Haro</a></div></div>
+          </div>
+
+          <div class="break-note">
+            <div class="break-label">Tasting passport</div>
+            <div class="break-body">The Barrio de la Estación Passport covers one selected wine and one tapa at each of the six Barrio wine bars. It is bought ahead and collected at the CVNE wine bar. Details at barrioestacion.com.</div>
+          </div>
+
+        </div>
+        <div class="panel-footer">
+          <button class="day-nav-btn" onclick="showSlide('day4')">← Day 4</button>
+          <div class="day-indicator">
+            <button class="day-dot" onclick="showSlide('day1')"></button>
+            <button class="day-dot" onclick="showSlide('day2')"></button>
+            <button class="day-dot" onclick="showSlide('day3')"></button>
+            <button class="day-dot" onclick="showSlide('day4')"></button>
+            <button class="day-dot active" onclick="showSlide('day5')"></button>
+          </div>
+          <button class="day-nav-btn" onclick="showSlide('cover')">↺ Cover</button>
+        </div>
+      </div>
+      <div class="map-panel">
+        <div id="map5"></div>
+        <div class="map-overlay"><strong>San Sebastián → Haro</strong><span class="legend-dot" style="background:#a4243b"></span>Main plan<br><span class="legend-dot" style="background:#e8830c"></span>Optional tasting rooms and lunch<br>🏨 Your apartment (start of the drive)</div>
       </div>
     </div>
   </div>
@@ -1385,13 +2011,56 @@ var days = {
     ],
     extras:[
       { lat:41.36872, lng:2.16349, name:'Montjuïc Cable Car', time:'Optional, 4:15 PM', icon:'🚡', note:'Taxi from Born (~15 min). Castle at the top.' }
+    ]},
+  day4: { center:[43.29,-2.45], zoom:9, color:'#1d6fd6',
+    home:{ lat:43.3206334, lng:-1.980246, title:'Your apartment', addr:'Okendo Kalea 13, 20004 San Sebastián' },
+    gmaps:'https://www.google.com/maps/dir/?api=1&origin=43.2611732,-2.9495937&destination=43.2686712,-2.9340118&waypoints=43.259255,-2.92302&travelmode=transit',
+    stops:[
+      { lat:43.3174159, lng:-1.9774257, name:'San Sebastián Bus Station', time:'11:00 AM', note:'Alsa coach to Bilbao. Be there by 10:40.' },
+      { lat:43.2611732, lng:-2.9495937, name:'Bilbao Bus Station (Termibus)', time:'~12:20 PM', note:'Metro from San Mamés to Casco Viejo.' },
+      { lat:43.259255,  lng:-2.92302,   name:'Pintxos lunch, Plaza Nueva', time:'12:45 PM', note:'Casco Viejo. Share pintxos at two or three bars.' },
+      { lat:43.2686712, lng:-2.9340118, name:'Guggenheim Museum Bilbao', time:'3:00 PM', note:'Timed ticket. Allow 2 to 2.5 hours.' },
+      { lat:43.2611732, lng:-2.9495937, name:'Bus back from Termibus', time:'7:30 PM', note:'Confirm the Friday timetable and book ahead.' }
+    ],
+    extras:[
+      { lat:43.2593788, lng:-2.9222899, name:'Gure Toki', time:'Lunch option', icon:'🍢', note:'Famous Plaza Nueva pintxos bar.' },
+      { lat:43.2591109, lng:-2.9222832, name:'Sorgínzulo', time:'Lunch option', icon:'🦑', note:'Giant calamari, cod pil-pil.' },
+      { lat:43.2577798, lng:-2.925547,  name:'Bar Santamaría', time:'Lunch option', icon:'🍤', note:'Hot pintxos cooked to order.' },
+      { lat:43.2575308, lng:-2.9235856, name:'Baster', time:'Lunch option', icon:'🥖', note:'Calamari sandwich, brioche buns.' },
+      { lat:43.2555913, lng:-2.9242454, name:'Mercado de la Ribera', time:'Option', icon:'🛒', note:'Market with pintxos stalls on the river.' },
+      { lat:43.2740084, lng:-2.9202094, name:'Artxanda Funicular', time:'Optional, ~5:00 PM', icon:'🚡', note:'Views over Bilbao. About €6 round trip.' }
+    ]},
+  day5: { center:[42.95,-2.4], zoom:8, color:'#a4243b',
+    home:{ lat:43.3206334, lng:-1.980246, title:'Your apartment', addr:'Okendo Kalea 13, 20004 San Sebastián' },
+    routeFromHome:true,
+    gmaps:'https://www.google.com/maps/dir/?api=1&origin=43.3206334,-1.980246&destination=42.5771518,-2.8468027&waypoints=42.5851955,-2.846647%7C42.5844855,-2.8466665%7C42.5815315,-2.8488812&travelmode=driving',
+    stops:[
+      { lat:42.5851955, lng:-2.846647,  name:'Roda Wine Bar', time:'11:30 AM', note:'Wine bar open daily 10:30 to 3:00.' },
+      { lat:42.5844855, lng:-2.8466665, name:'La Rioja Alta wine bar', time:'12:20 PM', note:'Garden wine bar. Sunday 11 to 3.' },
+      { lat:42.5815315, lng:-2.8488812, name:'CVNE wine bar', time:'1:10 PM', note:'Wine bar open Sunday 9 to 2.' },
+      { lat:42.5776,    lng:-2.8461,    name:'Lunch in Haro Old Town', time:'2:30 PM', note:'Calle Santo Tomás and Plaza de la Paz.' },
+      { lat:42.5771518, lng:-2.8468027, name:'Plaza de la Paz', time:'4:15 PM', note:'Old town stroll. Leave by about 5:00 PM.' }
+    ],
+    extras:[
+      { lat:42.5829868, lng:-2.8473474, name:'Bodegas Muga terrace', time:'Terrace 12:00 to 2:30 PM', icon:'🥂', note:'Wine by the glass. Confirm Sunday hours.' },
+      { lat:42.5837957, lng:-2.8474315, name:'Bodegas Gómez Cruzado', time:'Sunday 10:00 AM to 2:30 PM', icon:'🍷', note:'Cata Flight of five wines.' },
+      { lat:42.5802531, lng:-2.850266,  name:'Bodegas TIHOM', time:'Sunday 11:30 AM to 3:00 PM', icon:'🧀', note:'Wine bar with tapas.' },
+      { lat:42.5838792, lng:-2.8512666, name:'Bodegas Bilbaínas', time:'Sunday 11:00 AM to 2:00 PM', icon:'🥂', note:'Wine bar and tasting.' },
+      { lat:42.5762125, lng:-2.8465936, name:'Restaurante Terete', time:'Lunch option', icon:'🐑', note:'Roast lamb. Reserve.' },
+      { lat:42.5757222, lng:-2.8493126, name:'El Rincón del Noble', time:'Lunch option', icon:'🐟', note:'Highly rated. Reserve.' },
+      { lat:42.57737,   lng:-2.8462,    name:'Restaurante Beethoven', time:'Lunch option', icon:'🍲', note:'Local cooking on Calle Santo Tomás.' },
+      { lat:42.5776676, lng:-2.8464879, name:'El Jarrero', time:'Lunch option', icon:'🥩', note:'Daily menu. Good value.' },
+      { lat:42.5759739, lng:-2.8504176, name:'Restaurante Alboroque', time:'Lunch option', icon:'🍽️', note:'Small, 4.9 stars. Reserve.' },
+      { lat:42.5773568, lng:-2.8464353, name:'Bar El Remolino', time:'Lunch option', icon:'🥘', note:'Pintxos on Plaza de la Paz.' },
+      { lat:42.5775909, lng:-2.8460849, name:'Bar Chamonix', time:'Lunch option', icon:'🍄', note:'Grilled mushrooms.' }
     ]}
 };
 
-var maps={}, markersMap={}, mapsInited={day1:false,day2:false,day3:false};
+var maps={}, markersMap={}, mapsInited={day1:false,day2:false,day3:false,day4:false,day5:false};
 
 
 function gmapsUrl(dayKey){
+  if(days[dayKey].gmaps) return days[dayKey].gmaps;
   var st=days[dayKey].stops, hot='41.39268,2.16740';
   var pts=st.map(function(s){return s.lat+','+s.lng;});
   if(dayKey==='day1'){ return 'https://www.google.com/maps/dir/?api=1&origin='+hot+'&destination='+pts[0]+'&travelmode=walking'; }
@@ -1419,7 +2088,7 @@ function initMap(dayKey){
   if(mapsInited[dayKey]) return;
   mapsInited[dayKey]=true;
   var d=days[dayKey];
-  var mapId=dayKey==='day1'?'map':(dayKey==='day2'?'map2':'map3');
+  var mapId=dayKey==='day1'?'map':(dayKey==='day2'?'map2':(dayKey==='day3'?'map3':(dayKey==='day4'?'map4':'map5')));
   var m=L.map(mapId,{center:d.center,zoom:d.zoom,zoomControl:true});
   var carto=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{
     attribution:'Tiles &copy; Esri, HERE, Garmin, OpenStreetMap contributors', maxZoom:19
@@ -1458,6 +2127,7 @@ function initMap(dayKey){
     markersMap[dayKey].push(marker);
     lls.push([s.lat,s.lng]);
   });
+  if(d.routeFromHome&&d.home) lls.unshift([d.home.lat,d.home.lng]);
   if(lls.length>1) L.polyline(lls,{color:d.color,weight:3.5,opacity:0.7,dashArray:'7 9'}).addTo(m);
   if(markersMap[dayKey].length) markersMap[dayKey][0].openPopup();
 
@@ -1482,9 +2152,10 @@ function initMap(dayKey){
     +'<text x="18" y="23" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17">🏨</text>'
     +'</svg></div>';
   var hotelIcon=L.divIcon({html:hotelSvg,iconSize:[36,36],iconAnchor:[18,18],popupAnchor:[0,-20],className:''});
-  L.marker([41.39268,2.16740],{icon:hotelIcon})
+  var hm=d.home||{lat:41.39268,lng:2.16740,title:'Renaissance Barcelona Hotel',addr:'Carrer de Pau Claris 122, Eixample<br>Barcelona 08009'};
+  L.marker([hm.lat,hm.lng],{icon:hotelIcon})
     .addTo(m)
-    .bindPopup('<div class="popup-title">Renaissance Barcelona Hotel</div><div class="popup-body">Carrer de Pau Claris 122, Eixample<br>Barcelona 08009</div>');
+    .bindPopup('<div class="popup-title">'+hm.title+'</div><div class="popup-body">'+hm.addr+'</div>');
 }
 
 function showSlide(id){
@@ -1509,7 +2180,13 @@ function selectStop(el,dayKey,idx){
   }
 }
 
-var order=['cover','day1','day2','day3'],cur=0;
+function setView4(w){
+  var m=maps.day4; if(!m) return;
+  if(w==='both') m.fitBounds([[43.25,-2.96],[43.33,-1.97]],{padding:[40,40]});
+  else if(w==='bilbao') m.fitBounds([[43.255,-2.952],[43.275,-2.918]],{padding:[30,30]});
+  else m.setView([43.3195,-1.9785],15);
+}
+var order=['cover','day1','day2','day3','day4','day5'],cur=0;
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'&&cur<order.length-1){cur++;showSlide(order[cur]);}
   else if(e.key==='ArrowLeft'&&cur>0){cur--;showSlide(order[cur]);}
