@@ -846,6 +846,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .d5-num { background: var(--d5); }
   .stop-thumb-ph.wine { background:#fbe9ed; }
 
+
+  :root { --d6: #0f7b6c; }
+  .d6-color { color: #7be0cf; }
+  .d6-badge { background: #e3f5f1; color: #0b5c51; border: 1px solid #b6e0d7; }
+  .stop-item.d6.active { --accent-color: var(--d6); }
+  .d6-num { background: var(--d6); }
+  .stop-thumb-ph.teal { background:#e3f5f1; }
+
   /* ── HOTEL NOTE ── */
   .hotel-note { margin-top: 10px; padding: 12px 13px; background: #fffbf0; border-radius: 9px; border: 1px solid #fde8a8; }
   .hotel-note-label { font-size: 11px; color: #b07d00; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; font-weight: 700; }
@@ -858,7 +866,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <!-- COVER -->
   <div class="slide active" id="slide-cover">
     <div class="cover" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px; height:100%;">
-      <div class="cover-eyebrow">Family Trip · Nov 23–29, 2026</div>
+      <div class="cover-eyebrow">Family Trip · Nov 23–30, 2026</div>
       <div class="cover-title">Barce<span>lona</span></div>
       <div class="cover-sub">2 full days + arrival evening &nbsp;·&nbsp; Ages 11 &amp; 16 &nbsp;·&nbsp; Eixample base</div>
       <div class="cover-days">
@@ -886,6 +894,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div class="label d5-color">Sun Nov 29</div>
           <div class="name">Rioja Day Trip</div>
           <div class="desc">Drive → Haro wineries → Tapas</div>
+        </div>
+        <div class="cover-day-card" onclick="showSlide('day6')">
+          <div class="label d6-color">Mon Nov 30</div>
+          <div class="name">Bayonne + Biarritz</div>
+          <div class="desc">Train → Chocolate → Dinner</div>
         </div>
       </div>
       <button class="cover-start-btn" onclick="showSlide('day1')">Start with Day 1 →</button>
@@ -942,6 +955,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button class="day-dot" onclick="showSlide('day3')"></button>
             <button class="day-dot" onclick="showSlide('day4')"></button>
             <button class="day-dot" onclick="showSlide('day5')"></button>
+            <button class="day-dot" onclick="showSlide('day6')"></button>
           </div>
           <button class="day-nav-btn" onclick="showSlide('day2')">Gaudí Day →</button>
         </div>
@@ -1194,6 +1208,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button class="day-dot" onclick="showSlide('day3')"></button>
             <button class="day-dot" onclick="showSlide('day4')"></button>
             <button class="day-dot" onclick="showSlide('day5')"></button>
+            <button class="day-dot" onclick="showSlide('day6')"></button>
           </div>
           <button class="day-nav-btn" onclick="showSlide('day3')">Day 3 →</button>
         </div>
@@ -1375,6 +1390,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button class="day-dot active" onclick="showSlide('day3')"></button>
             <button class="day-dot" onclick="showSlide('day4')"></button>
             <button class="day-dot" onclick="showSlide('day5')"></button>
+            <button class="day-dot" onclick="showSlide('day6')"></button>
           </div>
           <button class="day-nav-btn" onclick="showSlide('day4')">Bilbao Day →</button>
         </div>
@@ -1394,9 +1410,18 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <button class="back-btn" onclick="showSlide('cover')">← Overview</button>
           <div class="day-badge d4-badge">Friday, Nov 27</div>
           <div class="panel-title">Bilbao Day Trip</div>
-          <div class="panel-sub">11:00 AM bus from San Sebastián, pintxos lunch, the Guggenheim, home by the evening bus.</div>
+          <div class="panel-sub">10:00 AM bus from San Sebastián, the Guggenheim at noon, pintxos lunch, then the 6:00 PM bus home.</div>
         </div>
         <div class="stops-list" id="stops-day4">
+
+          <div class="break-note">
+            <div class="break-label">Buses to check on alsa.com</div>
+            <div class="break-body">
+              <strong>Out:</strong> 10:00 AM from San Sebastián. About 1h 20m, from about €8. Leave the apartment about 9:25 AM.<br>
+              <strong>Back:</strong> 6:00 PM is the plan, with the 6:30 PM as the backup. About 1h 20m, so you arrive in San Sebastián around 7:20 to 7:50 PM. Please confirm the Friday Nov 27 times and buy both tickets ahead.<br>
+              <strong>Metro or taxi:</strong> the Termibus has a San Mamés metro stop, and taxis are at the station. The metro and walking times on this page are estimates.
+            </div>
+          </div>
 
           <div class="stop-item d4 active" onclick="selectStop(this,'day4',0)">
             <div class="stop-top">
@@ -1405,13 +1430,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="stop-num d4-num">1</div>
               </div>
               <div class="stop-meta">
-                <div class="stop-time">11:00 AM</div>
+                <div class="stop-time">10:00 AM</div>
                 <div class="stop-name">San Sebastián Bus Station</div>
                 <div class="stop-rating"><span class="stop-type">Alsa coach to Bilbao</span></div>
-                <div class="stop-preview">About 1h 20m ride. Be there by 10:40…</div>
+                <div class="stop-preview">Leave the apartment about 9:25…</div>
               </div>
             </div>
-            <div class="stop-detail">About a 10 minute walk from your apartment on Okendo Kalea (roughly 0.5 km). Long-distance coaches leave from the underground level, regional buses from outside, so follow the signs down. Buy the Alsa ticket ahead at alsa.com (fares from about €8 each way, so under-12s may be cheaper). Allow about 1h 20m for the ride. Confirm the exact Friday departure when you book.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.3174159,-1.9774257" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Federico García Lorca Pasealekua 1</a></div></div>
+            <div class="stop-detail">About a 10 minute walk from your apartment on Okendo Kalea (roughly 0.5 km). Long-distance coaches leave from the underground level, regional buses from outside, so follow the signs down. Buy the Alsa ticket ahead at alsa.com and confirm the Friday 10:00 departure. About 1h 20m ride.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.3174159,-1.9774257" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Federico García Lorca Pasealekua 1</a></div></div>
           </div>
 
           <div class="stop-item d4" onclick="selectStop(this,'day4',1)">
@@ -1421,7 +1446,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="stop-num d4-num">2</div>
               </div>
               <div class="stop-meta">
-                <div class="stop-time">~12:20 PM</div>
+                <div class="stop-time">~11:20 AM</div>
                 <div class="stop-name">Bilbao Bus Station (Termibus)</div>
                 <div class="stop-rating">
                   <span class="stop-stars">★★★★★</span>
@@ -1429,36 +1454,20 @@ svg.leaflet-image-layer.leaflet-interactive path {
                   <span class="stop-rating-count">(7,424)</span>
                   <span class="stop-type">· Arrival</span>
                 </div>
-                <div class="stop-preview">Metro from the station to the Old Town…</div>
+                <div class="stop-preview">Taxi straight to the Guggenheim…</div>
               </div>
             </div>
-            <div class="stop-detail">Arrives at Termibus, Gurtubay Kalea 1, which is connected to the San Mamés metro station. Take the metro toward Casco Viejo, about 10 minutes door to door. A taxi is also a short ride if you want to skip the transfer.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2611732,-2.9495937" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Gurtubay Kalea 1, Bilbao</a></div></div>
+            <div class="stop-detail">Arrives at Termibus, Gurtubay Kalea 1, in the San Mamés area. The Guggenheim is about 2 km away: a taxi is about 10 minutes, or take the metro to Moyúa and walk about 10 minutes, or walk about 25 to 30 minutes. A taxi is easiest to be at the museum by noon.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2611732,-2.9495937" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Gurtubay Kalea 1, Bilbao</a></div></div>
           </div>
 
           <div class="stop-item d4" onclick="selectStop(this,'day4',2)">
             <div class="stop-top">
               <div class="stop-thumb-wrap">
-                <div class="stop-thumb-ph blue">🍽️</div>
+                <div class="stop-thumb-ph blue">🏛️</div>
                 <div class="stop-num d4-num">3</div>
               </div>
               <div class="stop-meta">
-                <div class="stop-time">12:45 PM</div>
-                <div class="stop-name">Pintxos lunch, Casco Viejo</div>
-                <div class="stop-rating"><span class="stop-type">Plaza Nueva</span></div>
-                <div class="stop-preview">Pick two or three bars and share…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Do a mini crawl on and around Plaza Nueva. Take what you want from the counter and tell the bartender what you had when you pay. Start with Sorgínzulo for the giant fried calamari, then Gure Toki for the classics, or Bar Santamaría and Baster (brioche buns, calamari sandwich) for something the kids will like. All of the options are in orange below.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.259255,-2.92302" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Plaza Nueva, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="stop-item d4" onclick="selectStop(this,'day4',3)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap">
-                <div class="stop-thumb-ph blue">🏛️</div>
-                <div class="stop-num d4-num">4</div>
-              </div>
-              <div class="stop-meta">
-                <div class="stop-time">3:00 PM</div>
+                <div class="stop-time">12:00 PM</div>
                 <div class="stop-name">Guggenheim Museum Bilbao</div>
                 <div class="stop-rating">
                   <span class="stop-stars">★★★★★</span>
@@ -1466,10 +1475,26 @@ svg.leaflet-image-layer.leaflet-interactive path {
                   <span class="stop-rating-count">(99,095)</span>
                   <span class="stop-type">· Museum</span>
                 </div>
-                <div class="stop-preview">Book a timed ticket for about 3:00…</div>
+                <div class="stop-preview">Timed ticket for 12:00…</div>
               </div>
             </div>
-            <div class="stop-detail">Open 10:00 to 19:00 on Fridays. Adults €15, under-18s free. Book a timed ticket online in advance, since tickets cannot be changed. Allow 2 to 2.5 hours. From Plaza Nueva it is a 25 to 30 minute walk along the river, or about 10 minutes by tram or taxi. Check the Puppy and Maman sculptures outside.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2686712,-2.9340118" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Abandoibarra Etorb. 2, Bilbao</a></div></div>
+            <div class="stop-detail">Open 10:00 to 19:00 on Fridays. Adults about €15, under-18s free. Book a timed ticket online for about 12:00, since tickets cannot be changed. Allow about 2 hours, or 2.5 if you want the Kusama mirror room. Walk the Puppy and Maman sculptures outside first. Coffee or a snack at the museum bistro if anyone needs it before lunch.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2686712,-2.9340118" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Abandoibarra Etorb. 2, Bilbao</a></div></div>
+          </div>
+
+          <div class="stop-item d4" onclick="selectStop(this,'day4',3)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph blue">🍽️</div>
+                <div class="stop-num d4-num">4</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">2:45 PM</div>
+                <div class="stop-name">Pintxos lunch, Casco Viejo</div>
+                <div class="stop-rating"><span class="stop-type">Plaza Nueva</span></div>
+                <div class="stop-preview">About 25 to 30 min walk or tram from the museum…</div>
+              </div>
+            </div>
+            <div class="stop-detail">From the Guggenheim it is about 25 to 30 minutes on foot along the river (past Zubizuri and the Arriaga Theatre), or a short tram or taxi ride. Take what you want from the counters and tell the bartender what you had when you pay. Pick two or three bars from the orange options.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.259255,-2.92302" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Plaza Nueva, Casco Viejo</a></div></div>
           </div>
 
           <div class="stop-item d4" onclick="selectStop(this,'day4',4)">
@@ -1479,22 +1504,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="stop-num d4-num">5</div>
               </div>
               <div class="stop-meta">
-                <div class="stop-time">7:30 PM</div>
+                <div class="stop-time">6:00 PM</div>
                 <div class="stop-name">Bus back from Termibus</div>
                 <div class="stop-rating"><span class="stop-type">Alsa coach to San Sebastián</span></div>
-                <div class="stop-preview">Plan on a 7:30 PM bus. Buy ahead…</div>
+                <div class="stop-preview">6:00 PM plan, 6:30 PM backup…</div>
               </div>
             </div>
-            <div class="stop-detail">Plan on the 7:30 PM Alsa coach, about 1h 10m to 1h 20m, back to San Sebastián. Leave the Old Town by about 6:45 PM for the metro to Termibus. Evening Alsa departures I found for similar weekdays were 6:30 PM and 7:30 PM, but I could not confirm the Friday Nov 27 timetable, so check alsa.com and book the return ticket in advance.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2611732,-2.9495937" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Gurtubay Kalea 1, Bilbao</a></div></div>
-          </div>
-
-          <div class="break-note">
-            <div class="break-label">Buses to check on alsa.com</div>
-            <div class="break-body">
-              <strong>Out:</strong> San Sebastián to Bilbao, 11:00 AM target. About 1h 20m, from about €8.<br>
-              <strong>Back:</strong> Bilbao to San Sebastián. Similar weekdays showed 6:30 PM and 7:30 PM Alsa coaches. Alsa lists its last Bilbao departure at 10:00 PM, but confirm the Friday timetable and buy tickets ahead.<br>
-              <strong>Home:</strong> the bus station is about a 10 minute walk from the apartment.
-            </div>
+            <div class="stop-detail">Leave the Old Town by about 5:00 PM for the metro to Termibus (about 15 to 20 minutes), aiming to be at the station by 5:40. If you want more time in the Old Town, take the 6:30 PM bus and leave by about 5:30 PM. Either way you are back in San Sebastián around 7:20 to 7:50 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2611732,-2.9495937" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Gurtubay Kalea 1, Bilbao</a></div></div>
           </div>
 
           <div class="opt-header">Pintxos options in Casco Viejo, choose on the spot</div>
@@ -1514,7 +1530,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="stop-preview">Famous Plaza Nueva counter…</div>
               </div>
             </div>
-            <div class="stop-detail">The famous one, with a counter of creative pintxos. Get the classics, such as the Gilda and the Idiazabal cheese soup with quail egg, and ask for the hot specials. Busy and rushed at peak times. Open 10:00 AM to 11:00 PM on Friday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2593788,-2.9222899" target="_blank" rel="noopener">Plaza Berria 12, Casco Viejo</a></div></div>
+            <div class="stop-detail">The famous one, with a counter of creative pintxos. Try the Gilda and the Idiazabal cheese soup with quail egg, and ask for the hot specials. Busy and rushed at peak times. Open 10:00 AM to 11:00 PM on Friday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2593788,-2.9222899" target="_blank" rel="noopener">Plaza Berria 12, Casco Viejo</a></div></div>
           </div>
 
           <div class="stop-item opt" onclick="selectStop(this,'day4',6)">
@@ -1568,7 +1584,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="stop-preview">Calamari sandwich, brioche buns…</div>
               </div>
             </div>
-            <div class="stop-detail">Tiny, loud and fun. Try the calamari sandwich and the brioche buns with octopus or pulled pork, which are good for kids. House vermouth for the adults. Open 11:30 AM to 11:00 PM on Friday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2575308,-2.9235856" target="_blank" rel="noopener">Posta Kalea 22, Casco Viejo</a></div></div>
+            <div class="stop-detail">Tiny, loud and fun. Try the calamari sandwich and the brioche buns with octopus or pulled pork. House vermouth for the adults. Open 11:30 AM to 11:00 PM on Friday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2575308,-2.9235856" target="_blank" rel="noopener">Posta Kalea 22, Casco Viejo</a></div></div>
           </div>
 
           <div class="stop-item opt" onclick="selectStop(this,'day4',9)">
@@ -1586,25 +1602,173 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="stop-preview">Pintxos stalls on the river…</div>
               </div>
             </div>
-            <div class="stop-detail">Large covered market on the river with an aisle of pintxos bars, about €2.50 each in 2026 per one reviewer. Open until midnight. A good fallback for an early dinner before the bus, though a few reviewers found the pintxos reheated.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2555913,-2.9242454" target="_blank" rel="noopener">Erribera Kalea 20 bis, Casco Viejo</a></div></div>
+            <div class="stop-detail">Large covered market on the river with an aisle of pintxos bars, about €2.50 each per one reviewer. Open until midnight. A few reviewers found the pintxos reheated.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2555913,-2.9242454" target="_blank" rel="noopener">Erribera Kalea 20 bis, Casco Viejo</a></div></div>
           </div>
+
+          <div class="opt-header">Shops near the food area, if time allows (about 4:00 to 5:00 PM)</div>
 
           <div class="stop-item opt" onclick="selectStop(this,'day4',10)">
             <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🚡</div></div>
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🎩</div></div>
               <div class="stop-meta">
-                <div class="stop-time">Optional, ~5:00 PM</div>
-                <div class="stop-name">Artxanda Funicular</div>
+                <div class="stop-time">Reopens 4:00 PM</div>
+                <div class="stop-name">Sombreros Gorostiaga</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.7</span>
+                  <span class="stop-rating-count">(290)</span>
+                  <span class="stop-type">· Traditional hat shop</span>
+                </div>
+                <div class="stop-preview">Get a txapela, the Basque beret…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Old-fashioned hat shop where reviewers say you will not leave without a txapela. Staff measure you and explain styles. Open Friday 10:00 to 1:30 and 4:00 to 8:00 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2585386,-2.9237243" target="_blank" rel="noopener">Víctor Kalea 9, Casco Viejo</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',11)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🧀</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Open all day</div>
+                <div class="stop-name">La Quesería</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.7</span>
+                  <span class="stop-rating-count">(240)</span>
+                  <span class="stop-type">· Cheese shop</span>
+                </div>
+                <div class="stop-preview">A cone of local cheeses, about €6…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Stylish cheese shop with local and artisan products, chocolate, jam and wine. A cone of sliced cheeses was about €6 per one reviewer, and only one person works there at times, so expect a wait. Open Friday 10:30 AM to 8:30 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2583162,-2.9246777" target="_blank" rel="noopener">Jardines Kalea 10, Casco Viejo</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',12)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🥪</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Open all day</div>
+                <div class="stop-name">CampesanoWorld</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(317)</span>
+                  <span class="stop-type">· Jamón shop</span>
+                </div>
+                <div class="stop-preview">Huge ibérico sandwiches…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Jamón shop with a wide selection and large sandwiches, around €6.80 for an ibérico one per a reviewer. More volume than artisanal. Open daily 10:00 AM to 9:00 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2585057,-2.9225313" target="_blank" rel="noopener">Cueva Altxerri 1, Casco Viejo</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',13)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">💍</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Reopens 5:30 PM</div>
+                <div class="stop-name">BASQ LORE</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.9</span>
+                  <span class="stop-rating-count">(62)</span>
+                  <span class="stop-type">· Basque jewelry</span>
+                </div>
+                <div class="stop-preview">Handmade Basque symbols…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Small shop of handmade jewelry and souvenirs using Basque symbols like the lauburu and eguzkilore. Closed 2:00 to 5:30 PM, so it only works if you take the 6:30 bus or go before 2:00.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2586759,-2.9243256" target="_blank" rel="noopener">Bidebarrieta Kalea 5, Casco Viejo</a></div></div>
+          </div>
+
+          <div class="opt-header">Quick sights on the way, choose on the spot</div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',14)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">⛪</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Option</div>
+                <div class="stop-name">Santiago Cathedral</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.3</span>
+                  <span class="stop-rating-count">(9,671)</span>
+                  <span class="stop-type">· Gothic cathedral</span>
+                </div>
+                <div class="stop-preview">Ticket includes San Antón church…</div>
+              </div>
+            </div>
+            <div class="stop-detail">About €10, and the ticket includes the nearby San Antón church. Reviewers recommend the audio guide and the cloister. Allow about 30 minutes.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2573174,-2.9238412" target="_blank" rel="noopener">Done Jakue Plazatxoa 1, Casco Viejo</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',15)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🎭</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Option</div>
+                <div class="stop-name">Arriaga Theatre</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(10,070)</span>
+                  <span class="stop-type">· Neo-baroque theatre</span>
+                </div>
+                <div class="stop-preview">Look from outside, on the river…</div>
+              </div>
+            </div>
+            <div class="stop-detail">1890 neo-baroque theatre on the river, a nice quick look on the walk between the museum and the Old Town. Tours exist, but I have not checked times.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2595482,-2.9247415" target="_blank" rel="noopener">Arriaga Plaza 1, Casco Viejo</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',16)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍰</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">On the way</div>
+                <div class="stop-name">bascake Bilbao</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.7</span>
+                  <span class="stop-rating-count">(1,728)</span>
+                  <span class="stop-type">· Basque cheesecake</span>
+                </div>
+                <div class="stop-preview">Top-rated cheesecake…</div>
+              </div>
+            </div>
+            <div class="stop-detail">One of the best-reviewed Basque cheesecakes in the city. Roughly between the Old Town and the Guggenheim, so it fits on the walk. Open Friday 10:00 AM to 8:00 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2630509,-2.9305359" target="_blank" rel="noopener">Colón de Larreátegui 23, Bilbao</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',17)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🏢</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Free</div>
+                <div class="stop-name">Azkuna Zentroa</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.5</span>
+                  <span class="stop-rating-count">(19,575)</span>
+                  <span class="stop-type">· Cultural center</span>
+                </div>
+                <div class="stop-preview">43 different columns, rooftop pool…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Free cultural center in a former wine warehouse. Look up to see the glass-bottomed rooftop pool from below. Open daily 8:00 AM to 9:00 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2599426,-2.936524" target="_blank" rel="noopener">Arriquíbar Plaza 4, Bilbao</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day4',18)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🌉</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">On the walk</div>
+                <div class="stop-name">Zubizuri</div>
                 <div class="stop-rating">
                   <span class="stop-stars">★★★★★</span>
                   <span class="stop-rating-num">4.4</span>
-                  <span class="stop-rating-count">(7,718)</span>
-                  <span class="stop-type">· Views</span>
+                  <span class="stop-rating-count">(13,426)</span>
+                  <span class="stop-type">· White footbridge</span>
                 </div>
-                <div class="stop-preview">Short ride up for city views…</div>
+                <div class="stop-preview">Photo stop on the riverside walk…</div>
               </div>
             </div>
-            <div class="stop-detail">A 3 minute ride to a viewpoint over Bilbao, about €6 round trip. Reviews are mixed (long queues in summer, not much else at the top), so it is only worth it if you have spare time and good light before the bus. Sunset is around 5:45 PM in late November.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2740084,-2.9202094" target="_blank" rel="noopener">Carretera Artxanda-Santo Domingo 27, Bilbao</a></div></div>
+            <div class="stop-detail">The white pedestrian bridge over the river, on the walk between the Guggenheim and the Old Town. Free and open 24 hours.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2663413,-2.9277689" target="_blank" rel="noopener">Zubizuri, Bilbao</a></div></div>
           </div>
 
         </div>
@@ -1616,6 +1780,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button class="day-dot" onclick="showSlide('day3')"></button>
             <button class="day-dot active" onclick="showSlide('day4')"></button>
             <button class="day-dot" onclick="showSlide('day5')"></button>
+            <button class="day-dot" onclick="showSlide('day6')"></button>
           </div>
           <button class="day-nav-btn" onclick="showSlide('day5')">Rioja Day →</button>
         </div>
@@ -1966,13 +2131,571 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button class="day-dot" onclick="showSlide('day3')"></button>
             <button class="day-dot" onclick="showSlide('day4')"></button>
             <button class="day-dot active" onclick="showSlide('day5')"></button>
+            <button class="day-dot" onclick="showSlide('day6')"></button>
           </div>
-          <button class="day-nav-btn" onclick="showSlide('cover')">↺ Cover</button>
+          <button class="day-nav-btn" onclick="showSlide('day6')">Basque Coast →</button>
         </div>
       </div>
       <div class="map-panel">
         <div id="map5"></div>
         <div class="map-overlay"><strong>San Sebastián → Haro</strong><span class="legend-dot" style="background:#a4243b"></span>Main plan<br><span class="legend-dot" style="background:#e8830c"></span>Optional tasting rooms and lunch<br>🏨 Your apartment (start of the drive)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="slide" id="slide-day6">
+    <div class="day-slide">
+      <div class="left-panel">
+        <div class="panel-header">
+          <button class="back-btn" onclick="showSlide('cover')">← Overview</button>
+          <div class="day-badge d6-badge">Monday, Nov 30</div>
+          <div class="panel-title">Bayonne + Biarritz</div>
+          <div class="panel-sub">Train via Hendaye to Bayonne for chocolate and the old town, over to Biarritz for sunset and dinner, then back to San Sebastián.</div>
+        </div>
+        <div class="stops-list" id="stops-day6">
+
+          <div class="break-note">
+            <div class="break-label">Getting there and back</div>
+            <div class="break-body">
+              <strong>Timing:</strong> this plan starts at noon. An 11:00 AM start works too, shift everything an hour earlier.<br>
+              <strong>Out:</strong> there is no direct train. Take the Euskotren from Amara-Donostia to Hendaye (E2, every 30 minutes, about 38 minutes, about €2.90 per the Seat61 guide), walk about 2 minutes to the SNCF station, then a TER regional train to Bayonne (about 35 minutes, my estimate). Allow about 30 minutes for the connection. No reservation is needed on TER.<br>
+              <strong>PassBask:</strong> a 2-day pass costs €14.30 and covers Euskotren San Sebastián to Hendaye plus TER Hendaye to Bayonne and Biarritz. It is worth it if you take several trains.<br>
+              <strong>Bayonne to Biarritz:</strong> taxi or Uber, about 20 minutes (my estimate), or the TER to Biarritz station, which is about 3 km from the center.<br>
+              <strong>Back:</strong> I could not confirm the last trains. Check euskotren.eus and ter.sncf.com. Plan to leave Biarritz by about 9:15 PM and taxi to Hendaye if the TER does not suit.<br>
+              <strong>Mondays:</strong> some places close Monday, so every option below is open on Mondays unless noted.
+            </div>
+          </div>
+
+          <div class="stop-item d6" onclick="selectStop(this,'day6',0)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph teal">🚆</div>
+                <div class="stop-num d6-num">1</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">12:00 PM</div>
+                <div class="stop-name">Amara-Donostia Euskotren station</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.2</span>
+                  <span class="stop-rating-count">(598)</span>
+                  <span class="stop-type">· Train to Hendaye</span>
+                </div>
+                <div class="stop-preview">Walk about 12 minutes from the apartment…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Leave the apartment around 11:40 AM. The station is on Easo Plaza, about 1 km from Okendo Kalea. Trains run every 30 minutes and tickets are sold at the machines (card or cash). Board the E2 toward Hendaye. For an 11:00 AM start instead, everything below shifts an hour earlier and Les Halles (see the orange options) becomes possible.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.3131496,-1.9816357" target="_blank" rel="noopener" style="color:#0b5c51;text-decoration:none">Easo Plaza 9, San Sebastián</a></div></div>
+          </div>
+
+          <div class="stop-item d6" onclick="selectStop(this,'day6',1)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph teal">🔄</div>
+                <div class="stop-num d6-num">2</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">~12:45 PM</div>
+                <div class="stop-name">Hendaye: change trains</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">3.9</span>
+                  <span class="stop-rating-count">(415)</span>
+                  <span class="stop-type">· Euskotren to SNCF</span>
+                </div>
+                <div class="stop-preview">Walk about 2 minutes to the SNCF station…</div>
+              </div>
+            </div>
+            <div class="stop-detail">The Euskotren station and the SNCF station are about 50 meters apart. Buy a TER ticket to Bayonne at the machines or on sncf-connect.com. Check times at ter.sncf.com, and allow about 30 minutes for the connection. You should reach Bayonne around 1:45 to 2:15 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.3531913,-1.7818973" target="_blank" rel="noopener" style="color:#0b5c51;text-decoration:none">Boulevard du Général de Gaulle, Hendaye</a></div></div>
+          </div>
+
+          <div class="stop-item d6" onclick="selectStop(this,'day6',2)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph teal">🍽️</div>
+                <div class="stop-num d6-num">3</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">2:15 PM</div>
+                <div class="stop-name">Late lunch on the Nive quays</div>
+                <div class="stop-rating"><span class="stop-type">Bayonne</span></div>
+                <div class="stop-preview">Quick lunch by the river, options in orange…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Arrive at Bayonne station and walk about 15 minutes into the old town. Pick a simple late lunch, because dinner is in Biarritz. Au p'ti bistro (open Monday 8 AM to 6 PM), Une Bouteille à la Nive (tapas over the river) and Comme Chez Toi (burgers, open until 2:00 PM so it may be too late) are the Monday options. La Grange and La Table de Sébastien Gravé are closed Monday. Les Halles closes at 1:30 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.49133,-1.474758" target="_blank" rel="noopener" style="color:#0b5c51;text-decoration:none">Quai Amiral Dubourdieu, Bayonne</a></div></div>
+          </div>
+
+          <div class="stop-item d6" onclick="selectStop(this,'day6',3)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph teal">🍫</div>
+                <div class="stop-num d6-num">4</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">3:15 PM</div>
+                <div class="stop-name">Daranatz, chocolate shop</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(106)</span>
+                  <span class="stop-type">· Chocolate</span>
+                </div>
+                <div class="stop-preview">Open Mondays. Old-school hand-made chocolate…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Classic chocolate shop on Rue Port-Neuf, open Monday 10:00 AM to 7:00 PM. Reviewers praise the hand-made chocolates, the chic packaging and the wall of chocolate bars from around the world. Cazenave, the historic hot-chocolate house next door, is closed on Mondays.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4922974,-1.4754817" target="_blank" rel="noopener" style="color:#0b5c51;text-decoration:none">Rue Port-Neuf 15, Bayonne</a></div></div>
+          </div>
+
+          <div class="stop-item d6" onclick="selectStop(this,'day6',4)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph teal">☕</div>
+                <div class="stop-num d6-num">5</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">3:45 PM</div>
+                <div class="stop-name">Puyodebat, La Tasse à Moustache</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.5</span>
+                  <span class="stop-rating-count">(403)</span>
+                  <span class="stop-type">· Hot chocolate</span>
+                </div>
+                <div class="stop-preview">Antique cups upstairs…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Chocolate boutique downstairs and a cozy chocolate salon upstairs in one of the oldest buildings in the city. Reviewers say hot chocolate in antique cups (€7, two mugs) is unforgettable. Open Monday 10:00 AM to 7:00 PM. Cathedral, Musée du Chocolat and the other sights are in orange if you have extra time.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.491472,-1.476512" target="_blank" rel="noopener" style="color:#0b5c51;text-decoration:none">Rue Orbe 11, Bayonne</a></div></div>
+          </div>
+
+          <div class="stop-item d6" onclick="selectStop(this,'day6',5)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph teal">🍰</div>
+                <div class="stop-num d6-num">6</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">4:45 PM</div>
+                <div class="stop-name">Place Georges Clemenceau, Biarritz</div>
+                <div class="stop-rating"><span class="stop-type">Chocolate and sweets</span></div>
+                <div class="stop-preview">Henriet, Pariès and Miremont…</div>
+              </div>
+            </div>
+            <div class="stop-detail">About 20 minutes by taxi or Uber from Bayonne (estimate), leaving around 4:20. Several historic sweet shops sit around the square: Chocolaterie Henriet, Maison Pariès (gâteau basque and chocolate) and Miremont (1872 tea room with sea views upstairs). Les Halles de Biarritz closes at 2:00 PM, so it will be closed.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4825275,-1.5617463" target="_blank" rel="noopener" style="color:#0b5c51;text-decoration:none">Place Georges Clemenceau, Biarritz</a></div></div>
+          </div>
+
+          <div class="stop-item d6" onclick="selectStop(this,'day6',6)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph teal">🌅</div>
+                <div class="stop-num d6-num">7</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">5:15 PM</div>
+                <div class="stop-name">Rocher de la Vierge</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.7</span>
+                  <span class="stop-rating-count">(16,933)</span>
+                  <span class="stop-type">· Viewpoint</span>
+                </div>
+                <div class="stop-preview">Sunset around 5:45 PM…</div>
+              </div>
+            </div>
+            <div class="stop-detail">The footbridge to the Virgin Mary statue on the rock, with views over the Grande Plage and the coast. Open 24 hours and free. Sunset is around 5:45 PM in late November, so plan to be there by about 5:15. The lighthouse is only open on weekends, so it will be closed.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4841208,-1.5703489" target="_blank" rel="noopener" style="color:#0b5c51;text-decoration:none">Rocher de la Vierge, Biarritz</a></div></div>
+          </div>
+
+          <div class="stop-item d6" onclick="selectStop(this,'day6',7)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph teal">🍷</div>
+                <div class="stop-num d6-num">8</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">7:30 PM</div>
+                <div class="stop-name">Dinner in Biarritz</div>
+                <div class="stop-rating"><span class="stop-type">Pick from the orange options</span></div>
+                <div class="stop-preview">Open Monday: Albert, Eugénie, Chistera…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Pick one of the dinner options below. Hernani, La Tantina de Burgos and La Table de Michel are all closed on Mondays. Reserve Chez Albert and Chez Eugénie ahead if you can.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.482,-1.56" target="_blank" rel="noopener" style="color:#0b5c51;text-decoration:none">Biarritz centre</a></div></div>
+          </div>
+
+          <div class="stop-item d6" onclick="selectStop(this,'day6',8)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <div class="stop-thumb-ph teal">🚕</div>
+                <div class="stop-num d6-num">9</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">9:15 PM</div>
+                <div class="stop-name">Head back: taxi to Hendaye</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(793)</span>
+                  <span class="stop-type">· Last train to San Sebastián</span>
+                </div>
+                <div class="stop-preview">Check the last Euskotren before you go…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Taxi from Biarritz to Hendaye (about 25 to 30 minutes, my estimate), then the Euskotren to San Sebastián at about 10:00 PM. Check the last departure at euskotren.eus. The Euskotren Hendaye stop is listed open until midnight, but that is not the same as the last train.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.3525775,-1.7820479" target="_blank" rel="noopener" style="color:#0b5c51;text-decoration:none">Boulevard du Général de Gaulle 99, Hendaye</a></div></div>
+          </div>
+
+          <div class="opt-header">Bayonne chocolate and sights, choose on the spot</div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',9)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🥖</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 7:30 AM to 1:30 PM</div>
+                <div class="stop-name">Carreau des Halles</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(2,458)</span>
+                  <span class="stop-type">· Covered market</span>
+                </div>
+                <div class="stop-preview">Only for an 11:00 AM start…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Open Monday until 1:30 PM. A reviewer said the seafood stalls were the highlight, with good produce and snacks prepared in front of you. You would only make it with the earlier 11:00 AM departure.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4882738,-1.4741143" target="_blank" rel="noopener" >Esplanade Roland-Barthes, Bayonne</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',10)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍫</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 9:30 AM to 7:00 PM</div>
+                <div class="stop-name">L'Atelier du Chocolat (shop)</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(223)</span>
+                  <span class="stop-type">· Chocolate shop</span>
+                </div>
+                <div class="stop-preview">Hot chocolate with a chosen square…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Chocolate shop and tea house. A reviewer says they let you choose a piece of chocolate to melt in your hot chocolate. Open Monday 9:30 AM to 7:00 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4919816,-1.4760156" target="_blank" rel="noopener">Rue Port-Neuf 37, Bayonne</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',11)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🏭</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 9:30 to 1:00, 2:00 to 6:00 PM</div>
+                <div class="stop-name">Musée du Chocolat</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.3</span>
+                  <span class="stop-rating-count">(1,759)</span>
+                  <span class="stop-type">· Chocolate museum</span>
+                </div>
+                <div class="stop-preview">Short tour with a tasting…</div>
+              </div>
+            </div>
+            <div class="stop-detail">The chocolate museum, with panels, a film, a view into the factory and a tasting at the end. One reviewer found it shorter than the advertised 1.5 hours. Open Monday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4914473,-1.45736" target="_blank" rel="noopener">Allée de Gibéléou 7, Bayonne</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',12)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">⛪</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 9:30 AM to 6:30 PM</div>
+                <div class="stop-name">Bayonne Cathedral</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(7,897)</span>
+                  <span class="stop-type">· Gothic cathedral</span>
+                </div>
+                <div class="stop-preview">UNESCO-listed, free to enter…</div>
+              </div>
+            </div>
+            <div class="stop-detail">A French Gothic cathedral with two spires and a cloister. Free entry per reviewers. Open Monday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4906589,-1.4776836" target="_blank" rel="noopener">Rue des Prébendes 15, Bayonne</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',13)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🖼️</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 10:00 AM to 6:00 PM</div>
+                <div class="stop-name">Musée Bonnat-Helleu</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.5</span>
+                  <span class="stop-rating-count">(485)</span>
+                  <span class="stop-type">· Fine arts museum</span>
+                </div>
+                <div class="stop-preview">Paintings, open Monday…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Fine arts museum with a strong Baroque collection. Open Monday, though it is closed Tuesday. Reviewers say there is no English translation on the labels. The Musée Basque is closed Mondays.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4920757,-1.4721566" target="_blank" rel="noopener">Rue Jacques Laffitte 5, Bayonne</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',14)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🥓</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 9:00 to 12:30, 2:00 to 6:00 PM</div>
+                <div class="stop-name">Pierre Ibaialde, ham workshop</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.8</span>
+                  <span class="stop-rating-count">(1,714)</span>
+                  <span class="stop-type">· Jambon de Bayonne</span>
+                </div>
+                <div class="stop-preview">About 45 minute tour, French only…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Artisan Bayonne ham producer with a roughly 40 to 45 minute guided visit. Reviewers say tours are in French only, and they used Google Translate. Open Monday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4894303,-1.4723611" target="_blank" rel="noopener">Rue des Cordeliers 41, Bayonne</a></div></div>
+          </div>
+
+          <div class="opt-header">Lunch options in Bayonne</div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',15)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🥗</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 8:00 AM to 6:00 PM</div>
+                <div class="stop-name">Au p'ti bistro</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(2,716)</span>
+                  <span class="stop-type">· Bistro on the Nive</span>
+                </div>
+                <div class="stop-preview">Terrace by the river…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Classic bistro on the river quay, with magret de canard, Caesar salad and steak. Reviewers say service can be slow and the beer is pricey. Open Monday 8 AM to 6 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.49133,-1.474758" target="_blank" rel="noopener">Quai Amiral Dubourdieu 9, Bayonne</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',16)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍷</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 12:00 PM to 2:00 AM</div>
+                <div class="stop-name">Une Bouteille à la Nive</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.1</span>
+                  <span class="stop-rating-count">(2,183)</span>
+                  <span class="stop-type">· Tapas over the river</span>
+                </div>
+                <div class="stop-preview">Terrace tables over the water…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Cozy terrace over the river with tapas, rabas and jambon with baguette. Reviewers say the wine is good but the food is average. Open Monday from noon.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4899046,-1.4741421" target="_blank" rel="noopener">Quai Galuperie 2, Bayonne</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',17)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍔</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 9:00 AM to 2:00 PM</div>
+                <div class="stop-name">Comme Chez Toi</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.9</span>
+                  <span class="stop-rating-count">(439)</span>
+                  <span class="stop-type">· Burgers and tapas</span>
+                </div>
+                <div class="stop-preview">Homemade burgers, 4.9 stars…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Reviewers call the burgers some of the best in years, with homemade sauce, and also praise the tapas. Open Monday 9:00 AM to 2:00 PM. A short walk from the old town.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4929414,-1.4655448" target="_blank" rel="noopener">Boulevard Alsace-Lorraine 45, Bayonne</a></div></div>
+          </div>
+
+          <div class="opt-header">Biarritz, choose on the spot</div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',18)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍬</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 9:30 AM to 7:30 PM</div>
+                <div class="stop-name">Chocolaterie Henriet</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(448)</span>
+                  <span class="stop-type">· Chocolate and gelato</span>
+                </div>
+                <div class="stop-preview">Vintage storefront on the square…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Historic chocolate shop with a vintage storefront, macarons, Basque pastries and gelato. Open Monday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4821491,-1.558925" target="_blank" rel="noopener">Place Georges Clemenceau, Biarritz</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',19)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🥧</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 9:00 AM to 7:00 PM</div>
+                <div class="stop-name">Maison Pariès</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(625)</span>
+                  <span class="stop-type">· Gâteau basque, chocolate</span>
+                </div>
+                <div class="stop-preview">Basque cake with a sea-view piazza…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Fresh gâteau basque with cream or cherry filling, chocolates sold by the box and home-made ice cream. No tables, but you can sit on the side piazza with a sea view. Open Monday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4825058,-1.5610723" target="_blank" rel="noopener">Place Bellevue 1, Biarritz</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',20)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">☕</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 9:30 AM to 10:30 PM</div>
+                <div class="stop-name">Miremont</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">3.9</span>
+                  <span class="stop-rating-count">(3,801)</span>
+                  <span class="stop-type">· 1872 tea room</span>
+                </div>
+                <div class="stop-preview">Famous hot chocolate, ocean view…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Founded in 1872 and famous for its hot chocolate, which one reviewer found very thick and salty. Upstairs has an ocean view. Service reviews are mixed. Open Monday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4825275,-1.5617463" target="_blank" rel="noopener">Place Georges Clemenceau 1B, Biarritz</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',21)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🏖️</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Open all day</div>
+                <div class="stop-name">Grande Plage</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(—)</span>
+                  <span class="stop-type">· Beach promenade</span>
+                </div>
+                <div class="stop-preview">Stroll along the main beach…</div>
+              </div>
+            </div>
+            <div class="stop-detail">The main beach and promenade, an easy stroll from the center to the Rocher de la Vierge before sunset.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4871335,-1.5558089" target="_blank" rel="noopener">La Grande Plage, Biarritz</a></div></div>
+          </div>
+
+          <div class="opt-header">Dinner options in Biarritz, open Monday</div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',22)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🦪</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 7:30 to 9:30 PM</div>
+                <div class="stop-name">Chez Albert</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.2</span>
+                  <span class="stop-rating-count">(2,806)</span>
+                  <span class="stop-type">· Seafood at the port</span>
+                </div>
+                <div class="stop-preview">Port des Pêcheurs, sea views, reserve…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Seafood institution at the fishing port. Reviewers recommend the oysters, sardines and seafood platter, and say you must book ahead or get a table only after 9 PM. Open Monday 12:15 to 2:00 PM and 7:30 to 9:30 PM. Phone +33 5 59 24 43 84.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4831061,-1.5652678" target="_blank" rel="noopener">Allée du Port des Pêcheurs 51 bis, Biarritz</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',23)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🐟</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 7:30 to 10:00 PM</div>
+                <div class="stop-name">Chez Eugénie</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(1,823)</span>
+                  <span class="stop-type">· Seafood with a beach view</span>
+                </div>
+                <div class="stop-preview">Fresh fish, beach and surfer views…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Reviewers praise fresh oysters, fish and the view over the beach. A bit expensive but worth it per reviewers. Open Monday 12:00 to 2:30 PM and 7:30 to 10:00 PM. Phone +33 5 24 33 84 01.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4840964,-1.5584101" target="_blank" rel="noopener">Boulevard du Général de Gaulle 17, Biarritz</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',24)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🦑</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon open until 2:00 AM</div>
+                <div class="stop-name">Chistera & Coquillages</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.5</span>
+                  <span class="stop-rating-count">(2,574)</span>
+                  <span class="stop-type">· Pintxos and seafood</span>
+                </div>
+                <div class="stop-preview">Open all day, near the Halles…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Basque-style seafood and pintxos near Les Halles. Reviewers rave about razor clams, foie gras and oysters. Open all day Monday, which helps with timing. Phone +33 5 59 41 89 45.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.4811465,-1.5619146" target="_blank" rel="noopener">Rue des Halles 13, Biarritz</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',25)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍤</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Mon 12:00 PM to 1:30 AM</div>
+                <div class="stop-name">Chez BB: Bistroquet</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(3,311)</span>
+                  <span class="stop-type">· Tapas and bistro</span>
+                </div>
+                <div class="stop-preview">Busy, book online…</div>
+              </div>
+            </div>
+            <div class="stop-detail">One of the busiest places in town, with croquettes, calamari and mussels. Reviewers say the food is good but not spectacular. Book online. Open Monday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.482412,-1.5640886" target="_blank" rel="noopener">Place Sainte-Eugénie 7, Biarritz</a></div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day6',26)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🐙</div></div>
+              <div class="stop-meta">
+                <div class="stop-time">Open all day Monday</div>
+                <div class="stop-name">Octopus</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.3</span>
+                  <span class="stop-rating-count">(1,484)</span>
+                  <span class="stop-type">· Seafood with ocean view</span>
+                </div>
+                <div class="stop-preview">Early kitchen, octopus dishes…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Seafood restaurant with ocean views, with the kitchen open at 6:30 PM per one reviewer. Open Monday 8:00 AM to 11:30 PM. Good if you want to eat earlier.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.482933,-1.559561" target="_blank" rel="noopener">Rue Gardères 2, Biarritz</a></div></div>
+          </div>
+
+        </div>
+        <div class="panel-footer">
+          <button class="day-nav-btn" onclick="showSlide('day5')">← Day 5</button>
+          <div class="day-indicator">
+            <button class="day-dot" onclick="showSlide('day1')"></button>
+            <button class="day-dot" onclick="showSlide('day2')"></button>
+            <button class="day-dot" onclick="showSlide('day3')"></button>
+            <button class="day-dot" onclick="showSlide('day4')"></button>
+            <button class="day-dot" onclick="showSlide('day5')"></button>
+            <button class="day-dot active" onclick="showSlide('day6')"></button>
+          </div>
+          <button class="day-nav-btn" onclick="showSlide('cover')">↺ Cover</button>
+        </div>
+      </div>
+      <div class="map-panel">
+        <div id="map6"></div>
+        <div class="view-chips">
+          <button onclick="setView6('all')">All</button>
+          <button onclick="setView6('bayonne')">Bayonne</button>
+          <button onclick="setView6('biarritz')">Biarritz</button>
+          <button onclick="setView6('hendaye')">Hendaye</button>
+        </div>
+        <div class="map-overlay"><strong>San Sebastián → Bayonne → Biarritz</strong><span class="legend-dot" style="background:#0f7b6c"></span>Main plan<br><span class="legend-dot" style="background:#e8830c"></span>Optional chocolate, sights, food<br>🏨 Your apartment</div>
       </div>
     </div>
   </div>
@@ -2014,13 +2737,13 @@ var days = {
     ]},
   day4: { center:[43.29,-2.45], zoom:9, color:'#1d6fd6',
     home:{ lat:43.3206334, lng:-1.980246, title:'Your apartment', addr:'Okendo Kalea 13, 20004 San Sebastián' },
-    gmaps:'https://www.google.com/maps/dir/?api=1&origin=43.2611732,-2.9495937&destination=43.2686712,-2.9340118&waypoints=43.259255,-2.92302&travelmode=transit',
+    gmaps:'https://www.google.com/maps/dir/?api=1&origin=43.2611732,-2.9495937&destination=43.259255,-2.92302&waypoints=43.2686712,-2.9340118&travelmode=transit',
     stops:[
-      { lat:43.3174159, lng:-1.9774257, name:'San Sebastián Bus Station', time:'11:00 AM', note:'Alsa coach to Bilbao. Be there by 10:40.' },
-      { lat:43.2611732, lng:-2.9495937, name:'Bilbao Bus Station (Termibus)', time:'~12:20 PM', note:'Metro from San Mamés to Casco Viejo.' },
-      { lat:43.259255,  lng:-2.92302,   name:'Pintxos lunch, Plaza Nueva', time:'12:45 PM', note:'Casco Viejo. Share pintxos at two or three bars.' },
-      { lat:43.2686712, lng:-2.9340118, name:'Guggenheim Museum Bilbao', time:'3:00 PM', note:'Timed ticket. Allow 2 to 2.5 hours.' },
-      { lat:43.2611732, lng:-2.9495937, name:'Bus back from Termibus', time:'7:30 PM', note:'Confirm the Friday timetable and book ahead.' }
+      { lat:43.3174159, lng:-1.9774257, name:'San Sebastián Bus Station', time:'10:00 AM', note:'Alsa coach to Bilbao. Leave the apartment about 9:25.' },
+      { lat:43.2611732, lng:-2.9495937, name:'Bilbao Bus Station (Termibus)', time:'~11:20 AM', note:'Taxi to the Guggenheim, about 10 minutes.' },
+      { lat:43.2686712, lng:-2.9340118, name:'Guggenheim Museum Bilbao', time:'12:00 PM', note:'Timed ticket. Allow about 2 hours.' },
+      { lat:43.259255,  lng:-2.92302,   name:'Pintxos lunch, Plaza Nueva', time:'2:45 PM', note:'Casco Viejo. Share pintxos at two or three bars.' },
+      { lat:43.2611732, lng:-2.9495937, name:'Bus back from Termibus', time:'6:00 PM', note:'6:30 PM is the backup. Confirm and book ahead.' }
     ],
     extras:[
       { lat:43.2593788, lng:-2.9222899, name:'Gure Toki', time:'Lunch option', icon:'🍢', note:'Famous Plaza Nueva pintxos bar.' },
@@ -2028,7 +2751,15 @@ var days = {
       { lat:43.2577798, lng:-2.925547,  name:'Bar Santamaría', time:'Lunch option', icon:'🍤', note:'Hot pintxos cooked to order.' },
       { lat:43.2575308, lng:-2.9235856, name:'Baster', time:'Lunch option', icon:'🥖', note:'Calamari sandwich, brioche buns.' },
       { lat:43.2555913, lng:-2.9242454, name:'Mercado de la Ribera', time:'Option', icon:'🛒', note:'Market with pintxos stalls on the river.' },
-      { lat:43.2740084, lng:-2.9202094, name:'Artxanda Funicular', time:'Optional, ~5:00 PM', icon:'🚡', note:'Views over Bilbao. About €6 round trip.' }
+      { lat:43.2585386, lng:-2.9237243, name:'Sombreros Gorostiaga', time:'Reopens 4:00 PM', icon:'🎩', note:'Basque berets. Closed 1:30 to 4:00.' },
+      { lat:43.2583162, lng:-2.9246777, name:'La Quesería', time:'Open all day', icon:'🧀', note:'Cheese shop. Cone of cheeses about €6.' },
+      { lat:43.2585057, lng:-2.9225313, name:'CampesanoWorld', time:'Open all day', icon:'🥪', note:'Jamón shop with big sandwiches.' },
+      { lat:43.2586759, lng:-2.9243256, name:'BASQ LORE', time:'Reopens 5:30 PM', icon:'💍', note:'Basque jewelry. Only works with the 6:30 bus.' },
+      { lat:43.2573174, lng:-2.9238412, name:'Santiago Cathedral', time:'Option', icon:'⛪', note:'About €10, includes San Antón church.' },
+      { lat:43.2595482, lng:-2.9247415, name:'Arriaga Theatre', time:'Option', icon:'🎭', note:'Neo-baroque theatre on the river.' },
+      { lat:43.2630509, lng:-2.9305359, name:'bascake Bilbao', time:'On the way', icon:'🍰', note:'Top-rated Basque cheesecake.' },
+      { lat:43.2599426, lng:-2.936524,  name:'Azkuna Zentroa', time:'Free', icon:'🏢', note:'Cultural center with a glass-bottom rooftop pool.' },
+      { lat:43.2663413, lng:-2.9277689, name:'Zubizuri', time:'On the walk', icon:'🌉', note:'White footbridge on the riverside walk.' }
     ]},
   day5: { center:[42.95,-2.4], zoom:8, color:'#a4243b',
     home:{ lat:43.3206334, lng:-1.980246, title:'Your apartment', addr:'Okendo Kalea 13, 20004 San Sebastián' },
@@ -2053,10 +2784,45 @@ var days = {
       { lat:42.5759739, lng:-2.8504176, name:'Restaurante Alboroque', time:'Lunch option', icon:'🍽️', note:'Small, 4.9 stars. Reserve.' },
       { lat:42.5773568, lng:-2.8464353, name:'Bar El Remolino', time:'Lunch option', icon:'🥘', note:'Pintxos on Plaza de la Paz.' },
       { lat:42.5775909, lng:-2.8460849, name:'Bar Chamonix', time:'Lunch option', icon:'🍄', note:'Grilled mushrooms.' }
+    ]},
+  day6: { center:[43.4,-1.75], zoom:9, color:'#0f7b6c',
+    home:{ lat:43.3206334, lng:-1.980246, title:'Your apartment', addr:'Okendo Kalea 13, 20004 San Sebastián' },
+    routeFromHome:true,
+    gmaps:'https://www.google.com/maps/dir/?api=1&origin=43.3206334,-1.980246&destination=43.4825275,-1.5617463&travelmode=transit',
+    stops:[
+      { lat:43.3131496, lng:-1.9816357, name:'Amara-Donostia Euskotren', time:'12:00 PM', note:'E2 to Hendaye, every 30 min, about 38 min.' },
+      { lat:43.3531913, lng:-1.7818973, name:'Hendaye (change trains)', time:'~12:45 PM', note:'Walk 2 min to the SNCF station. TER to Bayonne.' },
+      { lat:43.49133, lng:-1.474758, name:'Late lunch on the Nive quays', time:'2:15 PM', note:'Options in orange.' },
+      { lat:43.4922974, lng:-1.4754817, name:'Daranatz chocolate', time:'3:15 PM', note:'Open Mondays. Cazenave is closed Mondays.' },
+      { lat:43.491472, lng:-1.476512, name:'Puyodebat hot chocolate', time:'3:45 PM', note:'Antique cups upstairs.' },
+      { lat:43.4825275, lng:-1.5617463, name:'Place Clemenceau, Biarritz', time:'4:45 PM', note:'Henriet, Pariès and Miremont sweet shops.' },
+      { lat:43.4841208, lng:-1.5703489, name:'Rocher de la Vierge', time:'5:15 PM', note:'Sunset about 5:45 PM.' },
+      { lat:43.482,     lng:-1.56,      name:'Dinner in Biarritz', time:'7:30 PM', note:'Options in orange, open Monday.' },
+      { lat:43.3525775, lng:-1.7820479, name:'Hendaye Euskotren', time:'~10:00 PM', note:'Check the last train at euskotren.eus.' }
+    ],
+    extras:[
+      { lat:43.4882738, lng:-1.4741143, name:'Carreau des Halles', time:'Mon until 1:30', icon:'🥖', note:'Only with an 11 AM start.' },
+      { lat:43.4919816, lng:-1.4760156, name:"L'Atelier du Chocolat", time:'Mon 9:30 to 7', icon:'🍫', note:'Shop and tea house.' },
+      { lat:43.4914473, lng:-1.45736,   name:'Musée du Chocolat', time:'Mon open', icon:'🏭', note:'Tour with a tasting.' },
+      { lat:43.4906589, lng:-1.4776836, name:'Bayonne Cathedral', time:'Mon 9:30 to 6:30', icon:'⛪', note:'Free entry.' },
+      { lat:43.4920757, lng:-1.4721566, name:'Musée Bonnat-Helleu', time:'Mon 10 to 6', icon:'🖼️', note:'Fine arts museum.' },
+      { lat:43.4894303, lng:-1.4723611, name:'Pierre Ibaialde', time:'Mon open', icon:'🥓', note:'Ham workshop tour, French only.' },
+      { lat:43.49133,   lng:-1.474758,  name:"Au p'ti bistro", time:'Lunch option', icon:'🥗', note:'Open Monday 8 to 6.' },
+      { lat:43.4899046, lng:-1.4741421, name:'Une Bouteille à la Nive', time:'Lunch option', icon:'🍷', note:'Tapas over the river.' },
+      { lat:43.4929414, lng:-1.4655448, name:'Comme Chez Toi', time:'Lunch option', icon:'🍔', note:'Burgers and tapas, 4.9.' },
+      { lat:43.4821491, lng:-1.558925,  name:'Chocolaterie Henriet', time:'Mon 9:30 to 7:30', icon:'🍬', note:'Vintage chocolate shop.' },
+      { lat:43.4825058, lng:-1.5610723, name:'Maison Pariès', time:'Mon 9 to 7', icon:'🥧', note:'Gâteau basque.' },
+      { lat:43.4825275, lng:-1.5617463, name:'Miremont', time:'Mon 9:30 to 10:30', icon:'☕', note:'1872 tea room.' },
+      { lat:43.4871335, lng:-1.5558089, name:'Grande Plage', time:'Stroll', icon:'🏖️', note:'Beach promenade.' },
+      { lat:43.4831061, lng:-1.5652678, name:'Chez Albert', time:'Dinner option', icon:'🦪', note:'Reserve. Port des Pêcheurs.' },
+      { lat:43.4840964, lng:-1.5584101, name:'Chez Eugénie', time:'Dinner option', icon:'🐟', note:'Seafood with a beach view.' },
+      { lat:43.4811465, lng:-1.5619146, name:'Chistera & Coquillages', time:'Dinner option', icon:'🦑', note:'Open all day Monday.' },
+      { lat:43.482412,  lng:-1.5640886, name:'Chez BB: Bistroquet', time:'Dinner option', icon:'🍤', note:'Book online.' },
+      { lat:43.482933,  lng:-1.559561,  name:'Octopus', time:'Dinner option', icon:'🐙', note:'Ocean view. Open all day.' }
     ]}
 };
 
-var maps={}, markersMap={}, mapsInited={day1:false,day2:false,day3:false,day4:false,day5:false};
+var maps={}, markersMap={}, mapsInited={day1:false,day2:false,day3:false,day4:false,day5:false,day6:false};
 
 
 function gmapsUrl(dayKey){
@@ -2088,7 +2854,7 @@ function initMap(dayKey){
   if(mapsInited[dayKey]) return;
   mapsInited[dayKey]=true;
   var d=days[dayKey];
-  var mapId=dayKey==='day1'?'map':(dayKey==='day2'?'map2':(dayKey==='day3'?'map3':(dayKey==='day4'?'map4':'map5')));
+  var mapId=dayKey==='day1'?'map':(dayKey==='day2'?'map2':(dayKey==='day3'?'map3':(dayKey==='day4'?'map4':(dayKey==='day5'?'map5':'map6'))));
   var m=L.map(mapId,{center:d.center,zoom:d.zoom,zoomControl:true});
   var carto=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{
     attribution:'Tiles &copy; Esri, HERE, Garmin, OpenStreetMap contributors', maxZoom:19
@@ -2180,13 +2946,20 @@ function selectStop(el,dayKey,idx){
   }
 }
 
+function setView6(w){
+  var m=maps.day6; if(!m) return;
+  if(w==='all') m.fitBounds([[43.33,-1.99],[43.5,-1.45]],{padding:[30,30]});
+  else if(w==='bayonne') m.fitBounds([[43.487,-1.482],[43.496,-1.462]],{padding:[30,30]});
+  else if(w==='biarritz') m.fitBounds([[43.474,-1.575],[43.49,-1.552]],{padding:[30,30]});
+  else m.setView([43.3527,-1.782],16);
+}
 function setView4(w){
   var m=maps.day4; if(!m) return;
   if(w==='both') m.fitBounds([[43.25,-2.96],[43.33,-1.97]],{padding:[40,40]});
   else if(w==='bilbao') m.fitBounds([[43.255,-2.952],[43.275,-2.918]],{padding:[30,30]});
   else m.setView([43.3195,-1.9785],15);
 }
-var order=['cover','day1','day2','day3','day4','day5'],cur=0;
+var order=['cover','day1','day2','day3','day4','day5','day6'],cur=0;
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'&&cur<order.length-1){cur++;showSlide(order[cur]);}
   else if(e.key==='ArrowLeft'&&cur>0){cur--;showSlide(order[cur]);}
