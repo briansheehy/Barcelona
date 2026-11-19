@@ -878,17 +878,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="cover-day-card" onclick="showSlide('day2')">
           <div class="label d2-color">Tue Nov 24</div>
           <div class="name">Gaudí Day</div>
-          <div class="desc">La Pedrera → Sagrada Família → Lunch</div>
+          <div class="desc">Sagrada Família 11:45 → Optional extras</div>
         </div>
         <div class="cover-day-card" onclick="showSlide('day3')">
           <div class="label d3-color">Wed Nov 25</div>
-          <div class="name">Old City + Born</div>
-          <div class="desc">Gothic → Born → Dinner</div>
-        </div>
-        <div class="cover-day-card" onclick="showSlide('day4')">
-          <div class="label d4-color">Fri Nov 27</div>
-          <div class="name">Bilbao Day Trip</div>
-          <div class="desc">Bus → Guggenheim → Pintxos</div>
+          <div class="name">Park Güell + Old City</div>
+          <div class="desc">Park Güell → Lunch → Dusk walk → Dinner</div>
         </div>
         <div class="cover-day-card" onclick="showSlide('day5')">
           <div class="label d5-color">Sun Nov 29</div>
@@ -953,7 +948,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button class="day-dot active" onclick="showSlide('day1')"></button>
             <button class="day-dot" onclick="showSlide('day2')"></button>
             <button class="day-dot" onclick="showSlide('day3')"></button>
-            <button class="day-dot" onclick="showSlide('day4')"></button>
             <button class="day-dot" onclick="showSlide('day5')"></button>
             <button class="day-dot" onclick="showSlide('day6')"></button>
           </div>
@@ -975,37 +969,18 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <button class="back-btn" onclick="showSlide('cover')">← Overview</button>
           <div class="day-badge d2-badge">Tuesday, Nov 24</div>
           <div class="panel-title">Gaudí Day</div>
-          <div class="panel-sub">La Pedrera, Sagrada Família, lunch nearby, then rest. Park Güell is an optional afternoon add-on.</div>
+          <div class="panel-sub">Sagrada Família at 11:45 is the one booked stop. Everything else is optional, so pick as you go.</div>
         </div>
         <div class="stops-list" id="stops-day2">
 
-          <div class="stop-item d2 active" onclick="selectStop(this,'day2',0)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap">
-                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjDBP2neFB13cCRd5qWyq3sseRloNkGAb8GkqpDViiYddW_KntGTKiN_P9bHy9bVZ53PC2W6DXp1ctLCAfjg_CE8RkjfksWUa62784V-WLbBV1uLSzDrqnZ6mWW3Rsj08xGoP2ssRShhLihNwKNxz1VsuQ=s400-w400-h400" alt="La Pedrera" loading="lazy">
-                <div class="stop-num d2-num">1</div>
-              </div>
-              <div class="stop-meta">
-                <div class="stop-time">9:15 AM</div>
-                <div class="stop-name">La Pedrera — Casa Milà</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.6</span>
-                  <span class="stop-rating-count">(112,570)</span>
-                  <span class="stop-type">· Museum</span>
-                </div>
-                <div class="stop-preview">Start on the rooftop while it is quiet…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Start here, about a 10 to 12 minute walk from the hotel, so no taxi and an easy morning. Do the rooftop chimneys first while it is quiet, then the Gaudí museum and the attic. Budget about 90 minutes, then walk or taxi to Sagrada Família for your 11:45 entry. Check the opening time on your ticket.<div class="stop-addr">📍 Pg. de Gràcia 92, Eixample</div></div>
-          </div>
 
         
-          <div class="stop-item d2" onclick="selectStop(this,'day2',1)">
+
+                    <div class="stop-item d2 active" onclick="selectStop(this,'day2',0)">
             <div class="stop-top">
               <div class="stop-thumb-wrap">
                 <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjD-uD3rW4IX07kFDDaSSkicUGkLEuHzv9WCgtWSQcp1eKLa61wJ366r1CWc2AygQ8kaverwhbqCA-cWi5k0Mr2jgNKxs0yvm4FdInj5iEZla3sAiR_wpApMr7mjjgxKwVP1eBMRHXDqclVbIMO49N_ywA=s400-w400-h400" alt="Sagrada Família" loading="lazy">
-                <div class="stop-num d2-num">2</div>
+                <div class="stop-num d2-num">1</div>
               </div>
               <div class="stop-meta">
                 <div class="stop-time">11:45 AM</div>
@@ -1019,7 +994,29 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="stop-preview">Your 11:45 entry is booked. Budget 90 minutes…</div>
               </div>
             </div>
-            <div class="stop-detail">Your timed entry is 11:45 AM, the earliest slot available. Arrive 10 to 15 minutes early for security. Budget 90 minutes inside. The midday light through the stained glass is still spectacular, and the interior scale will stop the kids cold.<div class="stop-addr">📍 Carrer de Mallorca 401, Eixample</div></div>
+            <div class="stop-detail">The one booked item today: timed entry at 11:45 AM. Arrive 10 to 15 minutes early for security. Budget 90 minutes inside. The midday light through the stained glass is still spectacular, and the interior scale will stop the kids cold. <div class="stop-addr">📍 Carrer de Mallorca 401, Eixample</div></div>
+          </div>
+
+          <div class="opt-header">Optional morning, before Sagrada</div>
+
+          <div class="stop-item stop-item opt" onclick="selectStop(this,'day2',1)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjDBP2neFB13cCRd5qWyq3sseRloNkGAb8GkqpDViiYddW_KntGTKiN_P9bHy9bVZ53PC2W6DXp1ctLCAfjg_CE8RkjfksWUa62784V-WLbBV1uLSzDrqnZ6mWW3Rsj08xGoP2ssRShhLihNwKNxz1VsuQ=s400-w400-h400" alt="La Pedrera" loading="lazy">
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">Optional, 9:15 AM</div>
+                <div class="stop-name">La Pedrera — Casa Milà</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.6</span>
+                  <span class="stop-rating-count">(112,570)</span>
+                  <span class="stop-type">· Museum</span>
+                </div>
+                <div class="stop-preview">Rooftop chimneys before Sagrada, if you want it…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Optional morning stop, about a 10 to 12 minute walk from the hotel. Rooftop chimneys first while it is quiet, then the Gaudí museum and the attic. Budget about 90 minutes, then walk or taxi to Sagrada Família. Skip it if you would rather sleep in. <div class="stop-addr">📍 Pg. de Gràcia 92, Eixample</div></div>
           </div>
 
           <div class="opt-header">Lunch options near Sagrada, choose on the spot</div>
@@ -1098,12 +1095,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
           <div class="break-note">
             <div class="break-label">Optional break</div>
-            <div class="break-body">After lunch, head back to the hotel to rest. La Pedrera is already done, so the afternoon and evening are yours.</div>
+            <div class="break-body">After lunch, head back to the hotel to rest. Everything except Sagrada is optional, so the afternoon and evening are yours.</div>
           </div>
 
           <div class="opt-header">Optional shops after lunch</div>
 
-          <div class="stop-item opt" onclick="selectStop(this,'day2',9)">
+          <div class="stop-item opt" onclick="selectStop(this,'day2',8)">
             <div class="stop-top">
               <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍫</div></div>
               <div class="stop-meta">
@@ -1121,7 +1118,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <div class="stop-detail">Spanish nougat (turrón) and chocolate, about a 3 minute walk from Sagrada. Open 9:00 AM to 9:45 PM, so no midday closing. Reviewers mention a chocolate sculpture of the basilica, tastings at the door and good hot chocolate. A good pop-in for the kids and for gifts.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=41.4040658,2.1737017" target="_blank" rel="noopener">Carrer de Provença 427, Eixample</a></div></div>
           </div>
 
-          <div class="stop-item opt" onclick="selectStop(this,'day2',10)">
+          <div class="stop-item opt" onclick="selectStop(this,'day2',9)">
             <div class="stop-top">
               <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🎸</div></div>
               <div class="stop-meta">
@@ -1139,31 +1136,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <div class="stop-detail">Well-regarded guitar shop with separate rooms to try instruments and a good range of Spanish-made classical guitars. On Tuesday it is open 3:00 to 8:00 PM, so go after lunch on the way back toward the hotel. About a 10 minute walk from the hotel.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=41.3921194,2.1695353" target="_blank" rel="noopener">Carrer de la Diputació 282, Eixample</a></div></div>
           </div>
 
-          <div class="opt-header">Optional afternoon, if energy allows</div>
 
-          <div class="stop-item opt" onclick="selectStop(this,'day2',6)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap">
-                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjAkkfL8Kdd77fOAMFWtL2ERnx0lU6a0lCDw6Q4dmAOj11xd_2PdbdZ9QpxchTozmp011Ipr6FCvNylr5tumM9sGVJTuzFD9CLPsLHCQ5XaQKUGvZT3VIGqPrcwFM1KgGRBMaOuGWJVqRE7Ky5k=s400-w400-h400" alt="Park Güell" loading="lazy">
-              </div>
-              <div class="stop-meta">
-                <div class="stop-time">Optional, ~3:30 PM</div>
-                <div class="stop-name">Park Güell</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.4</span>
-                  <span class="stop-rating-count">(238,326)</span>
-                  <span class="stop-type">· Park · book ahead</span>
-                </div>
-                <div class="stop-preview">Mosaic salamander and city views, if energy allows…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Optional afternoon add-on after a rest at the hotel. About a 15 minute taxi each way. Mosaic salamander, tilted stone columns, panoramic views. Book timed entry at parkguell.barcelona if you decide to go, and skip it on a slower day.<div class="stop-addr">📍 Carrer d'Olot, Gràcia</div></div>
-          </div>
 
           <div class="opt-header">Dinner options near the hotel, choose on the spot</div>
 
-          <div class="stop-item opt" onclick="selectStop(this,'day2',7)">
+          <div class="stop-item opt" onclick="selectStop(this,'day2',6)">
             <div class="stop-top">
               <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍕</div></div>
               <div class="stop-meta">
@@ -1181,7 +1158,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <div class="stop-detail">Relaxed pizzeria and pasta place. You can watch the pizzas go into the oven, and reviewers say the staff speak English. About a 7 minute walk from the hotel.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=41.397897,2.1669067" target="_blank" rel="noopener">Carrer de Girona 133, 08037 Barcelona</a></div></div>
           </div>
 
-          <div class="stop-item opt" onclick="selectStop(this,'day2',8)">
+          <div class="stop-item opt" onclick="selectStop(this,'day2',7)">
             <div class="stop-top">
               <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍤</div></div>
               <div class="stop-meta">
@@ -1206,7 +1183,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button class="day-dot" onclick="showSlide('day1')"></button>
             <button class="day-dot active" onclick="showSlide('day2')"></button>
             <button class="day-dot" onclick="showSlide('day3')"></button>
-            <button class="day-dot" onclick="showSlide('day4')"></button>
             <button class="day-dot" onclick="showSlide('day5')"></button>
             <button class="day-dot" onclick="showSlide('day6')"></button>
           </div>
@@ -1215,7 +1191,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       </div>
       <div class="map-panel">
         <div id="map2"></div>
-        <div class="map-overlay"><strong>Tuesday</strong><span class="legend-dot" style="background:#6c3fc4"></span>Main plan<br><span class="legend-dot" style="background:#e8830c"></span>Optional: lunch, shops, Park Güell, dinner</div>
+        <div class="map-overlay"><strong>Tuesday</strong><span class="legend-dot" style="background:#6c3fc4"></span>Main plan<br><span class="legend-dot" style="background:#e8830c"></span>Optional: La Pedrera, lunch, shops, dinner</div>
       </div>
     </div>
   </div>
@@ -1227,40 +1203,61 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="panel-header">
           <button class="back-btn" onclick="showSlide('cover')">← Overview</button>
           <div class="day-badge d3-badge">Wednesday, Nov 25</div>
-          <div class="panel-title">Old City + Born</div>
-          <div class="panel-sub">Walk the Gothic and Born. Taxi to the castle. Last dinner.</div>
+          <div class="panel-title">Park Güell + Old City</div>
+          <div class="panel-sub">Park Güell at 11, then down to the old city for lunch, Born and a dusk walk. Last dinner at Casa Luz.</div>
         </div>
         <div class="stops-list" id="stops-day3">
 
           <div class="stop-item d3 active" onclick="selectStop(this,'day3',0)">
             <div class="stop-top">
               <div class="stop-thumb-wrap">
-                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjDgZKi4XM0MLMQkwzaU08cjiS7NF_L99Cl4JH9Ak_l3NkIyxdhae5Y2LeegxwXlgRM2eccrsmKNxIwluK2cJ35V0_sMqpmlcp2MzzWSy4s9YYNHEHSK-I7JiCJgEz6S1iZ2o1zY_CGjujDe=s400-w400-h400" alt="La Boqueria" loading="lazy">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjAkkfL8Kdd77fOAMFWtL2ERnx0lU6a0lCDw6Q4dmAOj11xd_2PdbdZ9QpxchTozmp011Ipr6FCvNylr5tumM9sGVJTuzFD9CLPsLHCQ5XaQKUGvZT3VIGqPrcwFM1KgGRBMaOuGWJVqRE7Ky5k=s400-w400-h400" alt="Park Güell" loading="lazy">
                 <div class="stop-num d3-num">1</div>
               </div>
               <div class="stop-meta">
-                <div class="stop-time">9:30 AM</div>
-                <div class="stop-name">La Boqueria</div>
+                <div class="stop-time">11:00 AM</div>
+                <div class="stop-name">Park Güell</div>
                 <div class="stop-rating">
                   <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.5</span>
-                  <span class="stop-rating-count">(214,065)</span>
-                  <span class="stop-type">· Market</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(238,326)</span>
+                  <span class="stop-type">· Park · booked 11:00 AM</span>
                 </div>
-                <div class="stop-preview">Go early — crowds build fast. Fresh fruit, jamón, juice…</div>
+                <div class="stop-preview">Mosaic salamander and city views, then walk down…</div>
               </div>
             </div>
-            <div class="stop-detail">Go early — crowds build fast. Fresh fruit cups, jamón, juice, chocolate. 45 minutes is enough. The 11-year-old will love the sensory overload. Notably absent from the email.<div class="stop-addr">📍 La Rambla 91, Ciutat Vella</div></div>
+            <div class="stop-detail">Taxi from the hotel, about 15 minutes, to arrive by 10:50 AM. Mosaic salamander, tilted stone columns and panoramic views over the city. Allow about 90 minutes to 2 hours. Your timed entry is booked for 11:00 AM. When you are done, walk down through Gràcia toward the old city (about 40 to 50 minutes, my estimate), or take a taxi or the metro if legs are tired. <div class="stop-addr">📍 Carrer d'Olot, Gràcia</div></div>
           </div>
 
           <div class="stop-item d3" onclick="selectStop(this,'day3',1)">
             <div class="stop-top">
               <div class="stop-thumb-wrap">
-                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjBTpqD3FoU0IMsWR6SIVA27ZB6JVvUSsqqGDTQkHLz2ZtJdVuDjiDJCFA_Hj_k2CYbTq9XQB_RVUB6CPm6ciW7tNy0WE0IRxfwAU63o9BBAcwsLJT7ofX54txcdgVZkVjSlbNipBkMF9LD5GQ=s400-w400-h400" alt="Santa Maria del Mar" loading="lazy">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjC-AyE8YDOc8oN84bOoBGt70_xS1Z8B0Wn-qXjo6_MXKk0ysJ9uUXr9oZG_zQijr1DZeBbcEGsPc1NekuMRh7ENzQx1daorYNv3AmKFurAGGWVSKACbK2ly1o7vECATTro55cyb9I0yNAsUyqM=s400-w400-h400" alt="Cal Pep" loading="lazy">
                 <div class="stop-num d3-num">2</div>
               </div>
               <div class="stop-meta">
-                <div class="stop-time">10:45 AM</div>
+                <div class="stop-time">1:45 PM</div>
+                <div class="stop-name">Cal Pep</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.4</span>
+                  <span class="stop-rating-count">(3,132)</span>
+                  <span class="stop-type">· Tapas</span>
+                </div>
+                <div class="stop-preview">Counter seats, no menu. Expect a wait…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Your friend's top pick. No reservations and counter seats go first-come, so arriving at 1:45 PM may mean a short wait. No menu, the waiter guides you. Must-orders: trifásico, tortilla de patata with chistorra, pimientos de padrón. Check the lunch service hours before you go. <div class="stop-addr">📍 Plaça de les Olles 8, Born</div></div>
+          </div>
+
+          <div class="stop-item d3" onclick="selectStop(this,'day3',2)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjBTpqD3FoU0IMsWR6SIVA27ZB6JVvUSsqqGDTQkHLz2ZtJdVuDjiDJCFA_Hj_k2CYbTq9XQB_RVUB6CPm6ciW7tNy0WE0IRxfwAU63o9BBAcwsLJT7ofX54txcdgVZkVjSlbNipBkMF9LD5GQ=s400-w400-h400" alt="Santa Maria del Mar" loading="lazy">
+                <div class="stop-num d3-num">3</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">3:00 PM</div>
                 <div class="stop-name">Santa Maria del Mar</div>
                 <div class="stop-rating">
                   <span class="stop-stars">★★★★★</span>
@@ -1271,28 +1268,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="stop-preview">Finest Catalan Gothic. Soaring columns, rooftop views…</div>
               </div>
             </div>
-            <div class="stop-detail">Walk east through the Gothic Quarter toward Born. The finest example of Catalan Gothic — soaring columns, minimal ornament. Climb to the rooftop for views over the neighbourhood.<div class="stop-addr">📍 Plaça de Santa Maria 1, Born</div></div>
-          </div>
-
-          <div class="stop-item d3" onclick="selectStop(this,'day3',2)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap">
-                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjC-AyE8YDOc8oN84bOoBGt70_xS1Z8B0Wn-qXjo6_MXKk0ysJ9uUXr9oZG_zQijr1DZeBbcEGsPc1NekuMRh7ENzQx1daorYNv3AmKFurAGGWVSKACbK2ly1o7vECATTro55cyb9I0yNAsUyqM=s400-w400-h400" alt="Cal Pep" loading="lazy">
-                <div class="stop-num d3-num">3</div>
-              </div>
-              <div class="stop-meta">
-                <div class="stop-time">1:00 PM</div>
-                <div class="stop-name">Cal Pep</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.4</span>
-                  <span class="stop-rating-count">(3,132)</span>
-                  <span class="stop-type">· Tapas</span>
-                </div>
-                <div class="stop-preview">Arrive at 1pm sharp. Counter seats, no menu…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Your friend's top pick. Arrive right at 1pm for counter seats. No menu — the waiter guides you. Must-orders: trifásico, tortilla de patata with chistorra, pimientos de padrón.<div class="stop-addr">📍 Plaça de les Olles 8, Born</div></div>
+            <div class="stop-detail">A short walk from Cal Pep. The finest example of Catalan Gothic, with soaring columns and minimal ornament. The rooftop climb is optional, so check the visiting hours for the afternoon. <div class="stop-addr">📍 Plaça de Santa Maria 1, Born</div></div>
           </div>
 
           <div class="stop-item d3" onclick="selectStop(this,'day3',3)">
@@ -1302,7 +1278,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="stop-num d3-num">4</div>
               </div>
               <div class="stop-meta">
-                <div class="stop-time">2:30 PM</div>
+                <div class="stop-time">3:45 PM</div>
                 <div class="stop-name">Mercat del Born — Roman Ruins</div>
                 <div class="stop-rating">
                   <span class="stop-stars">★★★★</span>
@@ -1323,7 +1299,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="stop-num d3-num">5</div>
               </div>
               <div class="stop-meta">
-                <div class="stop-time">3:00 PM</div>
+                <div class="stop-time">4:30 PM</div>
                 <div class="stop-name">Gelaaati di Marco</div>
                 <div class="stop-rating">
                   <span class="stop-stars">★★★★★</span>
@@ -1334,14 +1310,30 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="stop-preview">Best gelato in Barcelona. Get the pistachio…</div>
               </div>
             </div>
-            <div class="stop-detail">4.7 stars across 5,000+ reviews. The pistachio is the move. Non-negotiable with an 11-year-old. 5-minute walk from Cal Pep.<div class="stop-addr">📍 Carrer de la Llibreteria 7, Gothic</div></div>
+            <div class="stop-detail">4.7 stars across 5,000+ reviews. The pistachio is the move. Walk west from Born into the Gothic Quarter, about 10 minutes. <div class="stop-addr">📍 Carrer de la Llibreteria 7, Gothic</div></div>
           </div>
 
           <div class="stop-item d3" onclick="selectStop(this,'day3',5)">
             <div class="stop-top">
               <div class="stop-thumb-wrap">
-                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjAGwHMat2W2QevcCNV3egpLo0eWuDqMiZtuPQJ1CTluH1LrvioVZjHFARlgYtYcYv5VhCMuNLrX-KEyGA3_XUeqsPM_u7P-pEzNxEnT8fzhvxT7fFTNJHb-Slq4hjLfrby_BuGPp8i5ZsDw-DBR1kcb=s400-w400-h400" alt="Casa Luz" loading="lazy">
+                <div class="stop-thumb-ph">🌆</div>
                 <div class="stop-num d3-num">6</div>
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">5:00 PM</div>
+                <div class="stop-name">Gothic Quarter dusk walk</div>
+                <div class="stop-rating"><span class="stop-type">Wander, no tickets</span></div>
+                <div class="stop-preview">Cathedral, quiet squares and lit-up alleys…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Sunset is around 5:30 PM in late November. Wander past the cathedral, through the lanes to Plaça Sant Felip Neri, then Plaça Reial and, if you like, onto La Rambla. No plan needed, and the lights come on as it gets dark. Then head to Casa Luz for dinner.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=41.3837,2.1763" target="_blank" rel="noopener">Plaça de Sant Felip Neri, Gothic Quarter</a></div></div>
+          </div>
+
+          <div class="stop-item d3" onclick="selectStop(this,'day3',6)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjAGwHMat2W2QevcCNV3egpLo0eWuDqMiZtuPQJ1CTluH1LrvioVZjHFARlgYtYcYv5VhCMuNLrX-KEyGA3_XUeqsPM_u7P-pEzNxEnT8fzhvxT7fFTNJHb-Slq4hjLfrby_BuGPp8i5ZsDw-DBR1kcb=s400-w400-h400" alt="Casa Luz" loading="lazy">
+                <div class="stop-num d3-num">7</div>
               </div>
               <div class="stop-meta">
                 <div class="stop-time">8:00 PM</div>
@@ -1355,19 +1347,39 @@ svg.leaflet-image-layer.leaflet-interactive path {
                 <div class="stop-preview">Rooftop off Plaça Catalunya. Oysters, updated Catalan food…</div>
               </div>
             </div>
-            <div class="stop-detail">Rooftop terrace off Plaça Catalunya. Updated Catalan food, great oysters, always good music. Your last night in the city — make it count.<div class="stop-addr">📍 Ronda de la Universitat 1, Eixample</div></div>
+            <div class="stop-detail">Reservation booked for 8:00 PM. Rooftop terrace off Plaça Catalunya. Updated Catalan food, great oysters, always good music. Your last night in the city. <div class="stop-addr">📍 Ronda de la Universitat 1, Eixample</div></div>
           </div>
 
 
           <div class="opt-header">Optional, if energy allows</div>
 
-          <div class="stop-item opt" onclick="selectStop(this,'day3',6)">
+          <div class="stop-item stop-item opt" onclick="selectStop(this,'day3',7)">
+            <div class="stop-top">
+              <div class="stop-thumb-wrap">
+                <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjDgZKi4XM0MLMQkwzaU08cjiS7NF_L99Cl4JH9Ak_l3NkIyxdhae5Y2LeegxwXlgRM2eccrsmKNxIwluK2cJ35V0_sMqpmlcp2MzzWSy4s9YYNHEHSK-I7JiCJgEz6S1iZ2o1zY_CGjujDe=s400-w400-h400" alt="La Boqueria" loading="lazy">
+              </div>
+              <div class="stop-meta">
+                <div class="stop-time">Optional, on your way</div>
+                <div class="stop-name">La Boqueria</div>
+                <div class="stop-rating">
+                  <span class="stop-stars">★★★★★</span>
+                  <span class="stop-rating-num">4.5</span>
+                  <span class="stop-rating-count">(214,065)</span>
+                  <span class="stop-type">· Market</span>
+                </div>
+                <div class="stop-preview">Fresh fruit, jamón, juice. Go before it winds down…</div>
+              </div>
+            </div>
+            <div class="stop-detail">Fresh fruit cups, jamón, juice, chocolate. It sits on La Rambla, on the way into the Gothic Quarter, so it works as a pop-in. Stalls wind down in the evening, so check the hours. 45 minutes is plenty. <div class="stop-addr">📍 La Rambla 91, Ciutat Vella</div></div>
+          </div>
+
+          <div class="stop-item opt" onclick="selectStop(this,'day3',8)">
             <div class="stop-top">
               <div class="stop-thumb-wrap">
                 <img class="stop-thumb" src="https://lh3.googleusercontent.com/place-photos/AG9NLjAJj6iFjlZIJjJ12MqOZmKdju-1k73m2DkXU_QrE3Ha-h4ZAeMmSAL-mt4MQS_F7Cxki5nptfVUtcnxwInNmJKKzhqwRD8oLzO6Rj-vslDuU9jgod0NKO9iHphE7lUcSLh1seMQJ4Y9L-PzUg=s400-w400-h400" alt="Montjuïc Cable Car" loading="lazy">
               </div>
               <div class="stop-meta">
-                <div class="stop-time">Optional, 4:15 PM</div>
+                <div class="stop-time">Optional, late afternoon</div>
                 <div class="stop-name">Montjuïc Cable Car</div>
                 <div class="stop-rating">
                   <span class="stop-stars">★★★★★</span>
@@ -1388,397 +1400,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <button class="day-dot" onclick="showSlide('day1')"></button>
             <button class="day-dot" onclick="showSlide('day2')"></button>
             <button class="day-dot active" onclick="showSlide('day3')"></button>
-            <button class="day-dot" onclick="showSlide('day4')"></button>
-            <button class="day-dot" onclick="showSlide('day5')"></button>
-            <button class="day-dot" onclick="showSlide('day6')"></button>
-          </div>
-          <button class="day-nav-btn" onclick="showSlide('day4')">Bilbao Day →</button>
-        </div>
-      </div>
-      <div class="map-panel">
-        <div id="map3"></div>
-        <div class="map-overlay"><strong>Gothic → Born</strong>Walkable day. Montjuïc Cable Car is an optional add-on in orange.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 4 -->
-  <div class="slide" id="slide-day4">
-    <div class="day-slide">
-      <div class="left-panel">
-        <div class="panel-header">
-          <button class="back-btn" onclick="showSlide('cover')">← Overview</button>
-          <div class="day-badge d4-badge">Friday, Nov 27</div>
-          <div class="panel-title">Bilbao Day Trip</div>
-          <div class="panel-sub">10:00 AM bus from San Sebastián, the Guggenheim at noon, pintxos lunch, then the 6:00 PM bus home.</div>
-        </div>
-        <div class="stops-list" id="stops-day4">
-
-          <div class="break-note">
-            <div class="break-label">Buses to check on alsa.com</div>
-            <div class="break-body">
-              <strong>Out:</strong> 10:00 AM from San Sebastián. About 1h 20m, from about €8. Leave the apartment about 9:25 AM.<br>
-              <strong>Back:</strong> 6:00 PM is the plan, with the 6:30 PM as the backup. About 1h 20m, so you arrive in San Sebastián around 7:20 to 7:50 PM. Please confirm the Friday Nov 27 times and buy both tickets ahead.<br>
-              <strong>Metro or taxi:</strong> the Termibus has a San Mamés metro stop, and taxis are at the station. The metro and walking times on this page are estimates.
-            </div>
-          </div>
-
-          <div class="stop-item d4 active" onclick="selectStop(this,'day4',0)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap">
-                <div class="stop-thumb-ph blue">🚌</div>
-                <div class="stop-num d4-num">1</div>
-              </div>
-              <div class="stop-meta">
-                <div class="stop-time">10:00 AM</div>
-                <div class="stop-name">San Sebastián Bus Station</div>
-                <div class="stop-rating"><span class="stop-type">Alsa coach to Bilbao</span></div>
-                <div class="stop-preview">Leave the apartment about 9:25…</div>
-              </div>
-            </div>
-            <div class="stop-detail">About a 10 minute walk from your apartment on Okendo Kalea (roughly 0.5 km). Long-distance coaches leave from the underground level, regional buses from outside, so follow the signs down. Buy the Alsa ticket ahead at alsa.com and confirm the Friday 10:00 departure. About 1h 20m ride.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.3174159,-1.9774257" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Federico García Lorca Pasealekua 1</a></div></div>
-          </div>
-
-          <div class="stop-item d4" onclick="selectStop(this,'day4',1)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap">
-                <div class="stop-thumb-ph blue">🚇</div>
-                <div class="stop-num d4-num">2</div>
-              </div>
-              <div class="stop-meta">
-                <div class="stop-time">~11:20 AM</div>
-                <div class="stop-name">Bilbao Bus Station (Termibus)</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.3</span>
-                  <span class="stop-rating-count">(7,424)</span>
-                  <span class="stop-type">· Arrival</span>
-                </div>
-                <div class="stop-preview">Taxi straight to the Guggenheim…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Arrives at Termibus, Gurtubay Kalea 1, in the San Mamés area. The Guggenheim is about 2 km away: a taxi is about 10 minutes, or take the metro to Moyúa and walk about 10 minutes, or walk about 25 to 30 minutes. A taxi is easiest to be at the museum by noon.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2611732,-2.9495937" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Gurtubay Kalea 1, Bilbao</a></div></div>
-          </div>
-
-          <div class="stop-item d4" onclick="selectStop(this,'day4',2)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap">
-                <div class="stop-thumb-ph blue">🏛️</div>
-                <div class="stop-num d4-num">3</div>
-              </div>
-              <div class="stop-meta">
-                <div class="stop-time">12:00 PM</div>
-                <div class="stop-name">Guggenheim Museum Bilbao</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.5</span>
-                  <span class="stop-rating-count">(99,095)</span>
-                  <span class="stop-type">· Museum</span>
-                </div>
-                <div class="stop-preview">Timed ticket for 12:00…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Open 10:00 to 19:00 on Fridays. Adults about €15, under-18s free. Book a timed ticket online for about 12:00, since tickets cannot be changed. Allow about 2 hours, or 2.5 if you want the Kusama mirror room. Walk the Puppy and Maman sculptures outside first. Coffee or a snack at the museum bistro if anyone needs it before lunch.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2686712,-2.9340118" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Abandoibarra Etorb. 2, Bilbao</a></div></div>
-          </div>
-
-          <div class="stop-item d4" onclick="selectStop(this,'day4',3)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap">
-                <div class="stop-thumb-ph blue">🍽️</div>
-                <div class="stop-num d4-num">4</div>
-              </div>
-              <div class="stop-meta">
-                <div class="stop-time">2:45 PM</div>
-                <div class="stop-name">Pintxos lunch, Casco Viejo</div>
-                <div class="stop-rating"><span class="stop-type">Plaza Nueva</span></div>
-                <div class="stop-preview">About 25 to 30 min walk or tram from the museum…</div>
-              </div>
-            </div>
-            <div class="stop-detail">From the Guggenheim it is about 25 to 30 minutes on foot along the river (past Zubizuri and the Arriaga Theatre), or a short tram or taxi ride. Take what you want from the counters and tell the bartender what you had when you pay. Pick two or three bars from the orange options.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.259255,-2.92302" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Plaza Nueva, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="stop-item d4" onclick="selectStop(this,'day4',4)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap">
-                <div class="stop-thumb-ph blue">🚌</div>
-                <div class="stop-num d4-num">5</div>
-              </div>
-              <div class="stop-meta">
-                <div class="stop-time">6:00 PM</div>
-                <div class="stop-name">Bus back from Termibus</div>
-                <div class="stop-rating"><span class="stop-type">Alsa coach to San Sebastián</span></div>
-                <div class="stop-preview">6:00 PM plan, 6:30 PM backup…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Leave the Old Town by about 5:00 PM for the metro to Termibus (about 15 to 20 minutes), aiming to be at the station by 5:40. If you want more time in the Old Town, take the 6:30 PM bus and leave by about 5:30 PM. Either way you are back in San Sebastián around 7:20 to 7:50 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2611732,-2.9495937" target="_blank" rel="noopener" style="color:#1555a8;text-decoration:none">Gurtubay Kalea 1, Bilbao</a></div></div>
-          </div>
-
-          <div class="opt-header">Pintxos options in Casco Viejo, choose on the spot</div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',5)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍢</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">Lunch option</div>
-                <div class="stop-name">Gure Toki</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.5</span>
-                  <span class="stop-rating-count">(5,736)</span>
-                  <span class="stop-type">· Pintxos</span>
-                </div>
-                <div class="stop-preview">Famous Plaza Nueva counter…</div>
-              </div>
-            </div>
-            <div class="stop-detail">The famous one, with a counter of creative pintxos. Try the Gilda and the Idiazabal cheese soup with quail egg, and ask for the hot specials. Busy and rushed at peak times. Open 10:00 AM to 11:00 PM on Friday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2593788,-2.9222899" target="_blank" rel="noopener">Plaza Berria 12, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',6)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🦑</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">Lunch option</div>
-                <div class="stop-name">Sorgínzulo</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.5</span>
-                  <span class="stop-rating-count">(4,258)</span>
-                  <span class="stop-type">· Pintxos</span>
-                </div>
-                <div class="stop-preview">Giant calamari, cod pil-pil…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Plaza Nueva. Reviewers love the huge fried calamari (ask for aioli), the cod in pil-pil sauce, duck in pastry and foie gras with brioche. More relaxed, with terrace seating. Open 9:30 AM to 10:30 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2591109,-2.9222832" target="_blank" rel="noopener">Plaza Berria 12, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',7)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍤</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">Lunch option</div>
-                <div class="stop-name">Bar Santamaría</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.6</span>
-                  <span class="stop-rating-count">(2,026)</span>
-                  <span class="stop-type">· Hot pintxos</span>
-                </div>
-                <div class="stop-preview">Cooked to order, a local favorite…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Hot pintxos cooked to order, like foie gras with apple and grilled cuttlefish. One reviewer called it the best food they had in Bilbao. Open 10:00 AM to midnight on Friday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2577798,-2.925547" target="_blank" rel="noopener">Andra Maria Kalea 18, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',8)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🥖</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">Lunch option</div>
-                <div class="stop-name">Baster</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.5</span>
-                  <span class="stop-rating-count">(2,465)</span>
-                  <span class="stop-type">· Tiny and lively</span>
-                </div>
-                <div class="stop-preview">Calamari sandwich, brioche buns…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Tiny, loud and fun. Try the calamari sandwich and the brioche buns with octopus or pulled pork. House vermouth for the adults. Open 11:30 AM to 11:00 PM on Friday.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2575308,-2.9235856" target="_blank" rel="noopener">Posta Kalea 22, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',9)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🛒</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">Option</div>
-                <div class="stop-name">Mercado de la Ribera</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.4</span>
-                  <span class="stop-rating-count">(34,526)</span>
-                  <span class="stop-type">· Market and pintxos</span>
-                </div>
-                <div class="stop-preview">Pintxos stalls on the river…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Large covered market on the river with an aisle of pintxos bars, about €2.50 each per one reviewer. Open until midnight. A few reviewers found the pintxos reheated.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2555913,-2.9242454" target="_blank" rel="noopener">Erribera Kalea 20 bis, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="opt-header">Shops near the food area, if time allows (about 4:00 to 5:00 PM)</div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',10)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🎩</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">Reopens 4:00 PM</div>
-                <div class="stop-name">Sombreros Gorostiaga</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.7</span>
-                  <span class="stop-rating-count">(290)</span>
-                  <span class="stop-type">· Traditional hat shop</span>
-                </div>
-                <div class="stop-preview">Get a txapela, the Basque beret…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Old-fashioned hat shop where reviewers say you will not leave without a txapela. Staff measure you and explain styles. Open Friday 10:00 to 1:30 and 4:00 to 8:00 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2585386,-2.9237243" target="_blank" rel="noopener">Víctor Kalea 9, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',11)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🧀</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">Open all day</div>
-                <div class="stop-name">La Quesería</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.7</span>
-                  <span class="stop-rating-count">(240)</span>
-                  <span class="stop-type">· Cheese shop</span>
-                </div>
-                <div class="stop-preview">A cone of local cheeses, about €6…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Stylish cheese shop with local and artisan products, chocolate, jam and wine. A cone of sliced cheeses was about €6 per one reviewer, and only one person works there at times, so expect a wait. Open Friday 10:30 AM to 8:30 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2583162,-2.9246777" target="_blank" rel="noopener">Jardines Kalea 10, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',12)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🥪</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">Open all day</div>
-                <div class="stop-name">CampesanoWorld</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.6</span>
-                  <span class="stop-rating-count">(317)</span>
-                  <span class="stop-type">· Jamón shop</span>
-                </div>
-                <div class="stop-preview">Huge ibérico sandwiches…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Jamón shop with a wide selection and large sandwiches, around €6.80 for an ibérico one per a reviewer. More volume than artisanal. Open daily 10:00 AM to 9:00 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2585057,-2.9225313" target="_blank" rel="noopener">Cueva Altxerri 1, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',13)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">💍</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">Reopens 5:30 PM</div>
-                <div class="stop-name">BASQ LORE</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.9</span>
-                  <span class="stop-rating-count">(62)</span>
-                  <span class="stop-type">· Basque jewelry</span>
-                </div>
-                <div class="stop-preview">Handmade Basque symbols…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Small shop of handmade jewelry and souvenirs using Basque symbols like the lauburu and eguzkilore. Closed 2:00 to 5:30 PM, so it only works if you take the 6:30 bus or go before 2:00.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2586759,-2.9243256" target="_blank" rel="noopener">Bidebarrieta Kalea 5, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="opt-header">Quick sights on the way, choose on the spot</div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',14)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">⛪</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">Option</div>
-                <div class="stop-name">Santiago Cathedral</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.3</span>
-                  <span class="stop-rating-count">(9,671)</span>
-                  <span class="stop-type">· Gothic cathedral</span>
-                </div>
-                <div class="stop-preview">Ticket includes San Antón church…</div>
-              </div>
-            </div>
-            <div class="stop-detail">About €10, and the ticket includes the nearby San Antón church. Reviewers recommend the audio guide and the cloister. Allow about 30 minutes.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2573174,-2.9238412" target="_blank" rel="noopener">Done Jakue Plazatxoa 1, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',15)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🎭</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">Option</div>
-                <div class="stop-name">Arriaga Theatre</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.6</span>
-                  <span class="stop-rating-count">(10,070)</span>
-                  <span class="stop-type">· Neo-baroque theatre</span>
-                </div>
-                <div class="stop-preview">Look from outside, on the river…</div>
-              </div>
-            </div>
-            <div class="stop-detail">1890 neo-baroque theatre on the river, a nice quick look on the walk between the museum and the Old Town. Tours exist, but I have not checked times.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2595482,-2.9247415" target="_blank" rel="noopener">Arriaga Plaza 1, Casco Viejo</a></div></div>
-          </div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',16)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🍰</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">On the way</div>
-                <div class="stop-name">bascake Bilbao</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.7</span>
-                  <span class="stop-rating-count">(1,728)</span>
-                  <span class="stop-type">· Basque cheesecake</span>
-                </div>
-                <div class="stop-preview">Top-rated cheesecake…</div>
-              </div>
-            </div>
-            <div class="stop-detail">One of the best-reviewed Basque cheesecakes in the city. Roughly between the Old Town and the Guggenheim, so it fits on the walk. Open Friday 10:00 AM to 8:00 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2630509,-2.9305359" target="_blank" rel="noopener">Colón de Larreátegui 23, Bilbao</a></div></div>
-          </div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',17)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🏢</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">Free</div>
-                <div class="stop-name">Azkuna Zentroa</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.5</span>
-                  <span class="stop-rating-count">(19,575)</span>
-                  <span class="stop-type">· Cultural center</span>
-                </div>
-                <div class="stop-preview">43 different columns, rooftop pool…</div>
-              </div>
-            </div>
-            <div class="stop-detail">Free cultural center in a former wine warehouse. Look up to see the glass-bottomed rooftop pool from below. Open daily 8:00 AM to 9:00 PM.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2599426,-2.936524" target="_blank" rel="noopener">Arriquíbar Plaza 4, Bilbao</a></div></div>
-          </div>
-
-          <div class="stop-item opt" onclick="selectStop(this,'day4',18)">
-            <div class="stop-top">
-              <div class="stop-thumb-wrap"><div class="stop-thumb-ph">🌉</div></div>
-              <div class="stop-meta">
-                <div class="stop-time">On the walk</div>
-                <div class="stop-name">Zubizuri</div>
-                <div class="stop-rating">
-                  <span class="stop-stars">★★★★★</span>
-                  <span class="stop-rating-num">4.4</span>
-                  <span class="stop-rating-count">(13,426)</span>
-                  <span class="stop-type">· White footbridge</span>
-                </div>
-                <div class="stop-preview">Photo stop on the riverside walk…</div>
-              </div>
-            </div>
-            <div class="stop-detail">The white pedestrian bridge over the river, on the walk between the Guggenheim and the Old Town. Free and open 24 hours.<div class="stop-addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=43.2663413,-2.9277689" target="_blank" rel="noopener">Zubizuri, Bilbao</a></div></div>
-          </div>
-
-        </div>
-        <div class="panel-footer">
-          <button class="day-nav-btn" onclick="showSlide('day3')">← Day 3</button>
-          <div class="day-indicator">
-            <button class="day-dot" onclick="showSlide('day1')"></button>
-            <button class="day-dot" onclick="showSlide('day2')"></button>
-            <button class="day-dot" onclick="showSlide('day3')"></button>
-            <button class="day-dot active" onclick="showSlide('day4')"></button>
             <button class="day-dot" onclick="showSlide('day5')"></button>
             <button class="day-dot" onclick="showSlide('day6')"></button>
           </div>
@@ -1786,13 +1407,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
         </div>
       </div>
       <div class="map-panel">
-        <div id="map4"></div>
-        <div class="view-chips">
-          <button onclick="setView4('both')">Both cities</button>
-          <button onclick="setView4('bilbao')">Bilbao</button>
-          <button onclick="setView4('ss')">San Sebastián</button>
-        </div>
-        <div class="map-overlay"><strong>San Sebastián → Bilbao</strong><span class="legend-dot" style="background:#1d6fd6"></span>Main plan<br><span class="legend-dot" style="background:#e8830c"></span>Optional pintxos and views<br>🏨 Your apartment on Okendo Kalea</div>
+        <div id="map3"></div>
+        <div class="map-overlay"><strong>Park Güell → Gothic → Born</strong>Down to the old city on foot. Optional stops in orange.</div>
       </div>
     </div>
   </div>
@@ -2124,12 +1740,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
         </div>
         <div class="panel-footer">
-          <button class="day-nav-btn" onclick="showSlide('day4')">← Day 4</button>
+          <button class="day-nav-btn" onclick="showSlide('day3')">← Day 3</button>
           <div class="day-indicator">
             <button class="day-dot" onclick="showSlide('day1')"></button>
             <button class="day-dot" onclick="showSlide('day2')"></button>
             <button class="day-dot" onclick="showSlide('day3')"></button>
-            <button class="day-dot" onclick="showSlide('day4')"></button>
             <button class="day-dot active" onclick="showSlide('day5')"></button>
             <button class="day-dot" onclick="showSlide('day6')"></button>
           </div>
@@ -2675,12 +2290,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
         </div>
         <div class="panel-footer">
-          <button class="day-nav-btn" onclick="showSlide('day5')">← Day 5</button>
+          <button class="day-nav-btn" onclick="showSlide('day5')">← Rioja Day</button>
           <div class="day-indicator">
             <button class="day-dot" onclick="showSlide('day1')"></button>
             <button class="day-dot" onclick="showSlide('day2')"></button>
             <button class="day-dot" onclick="showSlide('day3')"></button>
-            <button class="day-dot" onclick="showSlide('day4')"></button>
             <button class="day-dot" onclick="showSlide('day5')"></button>
             <button class="day-dot active" onclick="showSlide('day6')"></button>
           </div>
@@ -2709,57 +2323,32 @@ var days = {
     ]},
   day2: { center:[41.402,2.160], zoom:13, color:'#6c3fc4',
     stops:[
-      { lat:41.39522, lng:2.16190, name:'La Pedrera',      time:'9:15 AM',  note:'Rooftop first while it is quiet. About 90 min.' },
-      { lat:41.40363, lng:2.17436, name:'Sagrada Família', time:'11:45 AM', note:'Timed entry 11:45. Arrive 10 min early. 90 min budget.' }
+      { lat:41.40363, lng:2.17436, name:'Sagrada Família', time:'11:45 AM', note:'Booked, timed entry 11:45. Arrive 10 min early. 90 min budget.' }
     ],
     extras:[
+      { lat:41.39522, lng:2.16190, name:'La Pedrera', time:'Optional, 9:15 AM', icon:'🏛️', note:'Rooftop before Sagrada. About 90 min.' },
       { lat:41.4052786, lng:2.1742545, name:'Madre Taberna Moderna', time:'Lunch option', note:'Tapas with a terrace view of Sagrada. Reserve: +34 934 35 43 83.' },
       { lat:41.4023754, lng:2.1776090, name:'Bistro Sagrada',        time:'Lunch option', note:'Tapas and paella, big portions. About 5 min from Sagrada.' },
       { lat:41.4055201, lng:2.1742873, name:'Divan',                 time:'Lunch option', note:'Tapas, paella, pasta. About 3 min from Sagrada.' },
       { lat:41.39058,   lng:2.16839,   name:'El Nacional',           time:'Lunch option', note:'Food hall. Taxi from Sagrada, near the hotel.' },
-      { lat:41.41449, lng:2.15269, name:'Park Güell', time:'Optional afternoon', icon:'🌳', note:'About 15 min taxi from the hotel. Book timed entry.' },
       { lat:41.397897,  lng:2.1669067, name:'Don Kilo',              time:'Dinner option', note:'Pizza and pasta. Carrer de Girona 133.' },
       { lat:41.3949834, lng:2.1711919, name:'Bar Betlem',            time:'Dinner option', note:'Tapas. Carrer de Girona 70.' },
       { lat:41.4040658, lng:2.1737017, name:'Torrons Vicens', time:'After lunch', icon:'🍫', note:'Nougat and chocolate. Open until 9:45 PM.' },
       { lat:41.3921194, lng:2.1695353, name:'Fanatic Guitars', time:'From 3:00 PM', icon:'🎸', note:'Guitar shop. Tuesday 3:00 to 8:00 PM.' }
     ]},
-  day3: { center:[41.379,2.172], zoom:13, color:'#0e9e72',
+  day3: { center:[41.397,2.168], zoom:13, color:'#0e9e72',
     stops:[
-      { lat:41.38174, lng:2.17158, name:'La Boqueria',          time:'9:30 AM',  note:'Go early. 45 min max.' },
-      { lat:41.38389, lng:2.18207, name:'Santa Maria del Mar',  time:'10:45 AM', note:'Finest Catalan Gothic. Climb the roof.' },
-      { lat:41.38396, lng:2.18341, name:'Cal Pep',              time:'1:00 PM',  note:'Arrive at 1pm for counter seats.' },
-      { lat:41.38540, lng:2.18410, name:'Mercat del Born',      time:'2:30 PM',  note:'Roman ruins under a glass market hall.' },
-      { lat:41.38321, lng:2.17730, name:'Gelaaati di Marco',    time:'3:00 PM',  note:'Best gelato in Barcelona. Get the pistachio.' },
-      { lat:41.38624, lng:2.16488, name:'Casa Luz',             time:'8:00 PM',  note:'Rooftop dinner. Final night.' }
+      { lat:41.41449, lng:2.15269, name:'Park Güell',           time:'11:00 AM', note:'Booked, timed entry 11:00 AM. Taxi from the hotel, about 15 min.' },
+      { lat:41.38396, lng:2.18341, name:'Cal Pep',              time:'1:45 PM',  note:'Counter seats, first come. Expect a short wait.' },
+      { lat:41.38389, lng:2.18207, name:'Santa Maria del Mar',  time:'3:00 PM',  note:'Finest Catalan Gothic.' },
+      { lat:41.38540, lng:2.18410, name:'Mercat del Born',      time:'3:45 PM',  note:'Roman ruins under a glass market hall.' },
+      { lat:41.38321, lng:2.17730, name:'Gelaaati di Marco',    time:'4:30 PM',  note:'Best gelato in Barcelona. Get the pistachio.' },
+      { lat:41.3837,  lng:2.1763,  name:'Gothic Quarter dusk walk', time:'5:00 PM', note:'Sunset about 5:30 PM. Cathedral and quiet squares.' },
+      { lat:41.38624, lng:2.16488, name:'Casa Luz',             time:'8:00 PM',  note:'Reservation booked. Rooftop dinner, final night.' }
     ],
     extras:[
-      { lat:41.36872, lng:2.16349, name:'Montjuïc Cable Car', time:'Optional, 4:15 PM', icon:'🚡', note:'Taxi from Born (~15 min). Castle at the top.' }
-    ]},
-  day4: { center:[43.29,-2.45], zoom:9, color:'#1d6fd6',
-    home:{ lat:43.3206334, lng:-1.980246, title:'Your apartment', addr:'Okendo Kalea 13, 20004 San Sebastián' },
-    gmaps:'https://www.google.com/maps/dir/?api=1&origin=43.2611732,-2.9495937&destination=43.259255,-2.92302&waypoints=43.2686712,-2.9340118&travelmode=transit',
-    stops:[
-      { lat:43.3174159, lng:-1.9774257, name:'San Sebastián Bus Station', time:'10:00 AM', note:'Alsa coach to Bilbao. Leave the apartment about 9:25.' },
-      { lat:43.2611732, lng:-2.9495937, name:'Bilbao Bus Station (Termibus)', time:'~11:20 AM', note:'Taxi to the Guggenheim, about 10 minutes.' },
-      { lat:43.2686712, lng:-2.9340118, name:'Guggenheim Museum Bilbao', time:'12:00 PM', note:'Timed ticket. Allow about 2 hours.' },
-      { lat:43.259255,  lng:-2.92302,   name:'Pintxos lunch, Plaza Nueva', time:'2:45 PM', note:'Casco Viejo. Share pintxos at two or three bars.' },
-      { lat:43.2611732, lng:-2.9495937, name:'Bus back from Termibus', time:'6:00 PM', note:'6:30 PM is the backup. Confirm and book ahead.' }
-    ],
-    extras:[
-      { lat:43.2593788, lng:-2.9222899, name:'Gure Toki', time:'Lunch option', icon:'🍢', note:'Famous Plaza Nueva pintxos bar.' },
-      { lat:43.2591109, lng:-2.9222832, name:'Sorgínzulo', time:'Lunch option', icon:'🦑', note:'Giant calamari, cod pil-pil.' },
-      { lat:43.2577798, lng:-2.925547,  name:'Bar Santamaría', time:'Lunch option', icon:'🍤', note:'Hot pintxos cooked to order.' },
-      { lat:43.2575308, lng:-2.9235856, name:'Baster', time:'Lunch option', icon:'🥖', note:'Calamari sandwich, brioche buns.' },
-      { lat:43.2555913, lng:-2.9242454, name:'Mercado de la Ribera', time:'Option', icon:'🛒', note:'Market with pintxos stalls on the river.' },
-      { lat:43.2585386, lng:-2.9237243, name:'Sombreros Gorostiaga', time:'Reopens 4:00 PM', icon:'🎩', note:'Basque berets. Closed 1:30 to 4:00.' },
-      { lat:43.2583162, lng:-2.9246777, name:'La Quesería', time:'Open all day', icon:'🧀', note:'Cheese shop. Cone of cheeses about €6.' },
-      { lat:43.2585057, lng:-2.9225313, name:'CampesanoWorld', time:'Open all day', icon:'🥪', note:'Jamón shop with big sandwiches.' },
-      { lat:43.2586759, lng:-2.9243256, name:'BASQ LORE', time:'Reopens 5:30 PM', icon:'💍', note:'Basque jewelry. Only works with the 6:30 bus.' },
-      { lat:43.2573174, lng:-2.9238412, name:'Santiago Cathedral', time:'Option', icon:'⛪', note:'About €10, includes San Antón church.' },
-      { lat:43.2595482, lng:-2.9247415, name:'Arriaga Theatre', time:'Option', icon:'🎭', note:'Neo-baroque theatre on the river.' },
-      { lat:43.2630509, lng:-2.9305359, name:'bascake Bilbao', time:'On the way', icon:'🍰', note:'Top-rated Basque cheesecake.' },
-      { lat:43.2599426, lng:-2.936524,  name:'Azkuna Zentroa', time:'Free', icon:'🏢', note:'Cultural center with a glass-bottom rooftop pool.' },
-      { lat:43.2663413, lng:-2.9277689, name:'Zubizuri', time:'On the walk', icon:'🌉', note:'White footbridge on the riverside walk.' }
+      { lat:41.38174, lng:2.17158, name:'La Boqueria', time:'Optional, on your way', icon:'🍓', note:'Market on La Rambla. Check the hours.' },
+      { lat:41.36872, lng:2.16349, name:'Montjuïc Cable Car', time:'Optional, late afternoon', icon:'🚡', note:'Taxi from Born (~15 min). Castle at the top.' }
     ]},
   day5: { center:[42.95,-2.4], zoom:8, color:'#a4243b',
     home:{ lat:43.3206334, lng:-1.980246, title:'Your apartment', addr:'Okendo Kalea 13, 20004 San Sebastián' },
@@ -2822,7 +2411,7 @@ var days = {
     ]}
 };
 
-var maps={}, markersMap={}, mapsInited={day1:false,day2:false,day3:false,day4:false,day5:false,day6:false};
+var maps={}, markersMap={}, mapsInited={day1:false,day2:false,day3:false,day5:false,day6:false};
 
 
 function gmapsUrl(dayKey){
@@ -2854,7 +2443,7 @@ function initMap(dayKey){
   if(mapsInited[dayKey]) return;
   mapsInited[dayKey]=true;
   var d=days[dayKey];
-  var mapId=dayKey==='day1'?'map':(dayKey==='day2'?'map2':(dayKey==='day3'?'map3':(dayKey==='day4'?'map4':(dayKey==='day5'?'map5':'map6'))));
+  var mapId=dayKey==='day1'?'map':(dayKey==='day2'?'map2':(dayKey==='day3'?'map3':(dayKey==='day5'?'map5':'map6')));
   var m=L.map(mapId,{center:d.center,zoom:d.zoom,zoomControl:true});
   var carto=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{
     attribution:'Tiles &copy; Esri, HERE, Garmin, OpenStreetMap contributors', maxZoom:19
@@ -2953,13 +2542,7 @@ function setView6(w){
   else if(w==='biarritz') m.fitBounds([[43.474,-1.575],[43.49,-1.552]],{padding:[30,30]});
   else m.setView([43.3527,-1.782],16);
 }
-function setView4(w){
-  var m=maps.day4; if(!m) return;
-  if(w==='both') m.fitBounds([[43.25,-2.96],[43.33,-1.97]],{padding:[40,40]});
-  else if(w==='bilbao') m.fitBounds([[43.255,-2.952],[43.275,-2.918]],{padding:[30,30]});
-  else m.setView([43.3195,-1.9785],15);
-}
-var order=['cover','day1','day2','day3','day4','day5','day6'],cur=0;
+var order=['cover','day1','day2','day3','day5','day6'],cur=0;
 document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight'&&cur<order.length-1){cur++;showSlide(order[cur]);}
   else if(e.key==='ArrowLeft'&&cur>0){cur--;showSlide(order[cur]);}
